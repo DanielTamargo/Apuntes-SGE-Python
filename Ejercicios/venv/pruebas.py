@@ -2,15 +2,20 @@ import funciones
 import datetime
 import random
 
-print("Ejercicio 15 - Tirada de dados")
-tirar = True
-while tirar:
-    funciones.tiradaDados()
-    eleccion = input("¿Tirar los dados de nuevo? (S/N): ").lower()
-    if eleccion == "n" or eleccion == "no":
-        tirar = False
-print()
-
+numero = 1919191
+numero = str(numero)
+print(numero)
+print(len(numero))
+x = len(numero) - 1
+print(x)
+print(numero[0],numero[1],numero[2])
+es_capicua = True
+for i in range(0, (len(numero) - 1)):
+    if numero[i] != numero[x]:
+        es_capicua = False
+        i = len(numero)
+    x -= 1
+print(es_capicua)
 
 # a = "hola"
 # print(len(a)) #sacar longitud string

@@ -19,7 +19,7 @@ def cualEsMayor(a, b):
         print(a,"es igual a",b)
 
 def estaEntre0y10(a):
-    if a >= 0 and a <= 10:
+    if 0 <= a <= 10:
         print("Sí,",a,"está entre 0 y 10.")
     else:
         print("No,",a,"no está entre 0 y 10.")
