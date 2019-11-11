@@ -1,4 +1,5 @@
 import datetime
+import random
 
 def recogerNombre():
     return input("Escribe tu nombre: ")
@@ -79,13 +80,40 @@ def esPalindromo(a):
 def fibonacci(n):
     a = 0
     b = 1
-    c = 1
     lista_numeros = "0, 1"
     while b < n:
         if (a + b) < n:
             lista_numeros += ", " + str(a + b)
-        c = a
-        a = b
-        b += c
+        b += a
+        a = b - a
     print("Lista de números fibonacci desde 0 hasta",n)
     print(lista_numeros)
+
+def anyoNacimiento():
+    nombre = input("Escribe tu nombre: ")
+    edad = int(input("Escribe tu edad: ")) #falta aprender a comprobar excepciones, ejemplo, si no introduce un numero
+    mes = int(input("Escribe el número del mes en el que naciste (ejemplo: 9): "))
+    dia = int(input("Escribe el día en el que naciste (ejemplo: 23): "))
+
+    if edad < 1:
+        print("Ja, ja, ja, me parto contigo")
+    else:
+        anyo = datetime.datetime.now().year
+        month = datetime.datetime.now().month
+        anyo -= edad
+        if mes > month:
+            anyo -= 1
+        elif mes == month:
+            day = datetime.datetime.now().day
+            if dia > day:
+                anyo -= 1
+            elif dia == day:
+                cumple = True
+
+    print("Hola",nombre + ", naciste en el año",anyo)
+    if cumple:
+        print("Enhorabuena, ¡hoy es tu cumple!")
+
+def tiradaDados():
+    print("Dado 1:",random.randint(1,6))
+    print("Dado 2:", random.randint(1, 6))

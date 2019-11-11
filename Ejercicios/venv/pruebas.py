@@ -1,6 +1,15 @@
 import funciones
+import datetime
+import random
 
-funciones.anyoNacimiento()
+print("Ejercicio 15 - Tirada de dados")
+tirar = True
+while tirar:
+    funciones.tiradaDados()
+    eleccion = input("¿Tirar los dados de nuevo? (S/N): ").lower()
+    if eleccion == "n" or eleccion == "no":
+        tirar = False
+print()
 
 
 # a = "hola"
