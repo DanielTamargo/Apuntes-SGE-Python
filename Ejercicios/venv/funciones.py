@@ -41,7 +41,7 @@ def parImpar(a):
         x = "par"
     print(a,"es",x + ".")
 
-def numerosImparseDel1al200():
+def numerosImparesDel1al200():
     # Ejercicio 9, con While
     n = 2
     lista_numeros = "1"
@@ -92,15 +92,16 @@ def fibonacci(n):
 def anyoNacimiento():
     nombre = input("Escribe tu nombre: ")
     edad = int(input("Escribe tu edad: ")) #falta aprender a comprobar excepciones, ejemplo, si no introduce un numero
-    mes = int(input("Escribe el número del mes en el que naciste (ejemplo: 9): "))
-    dia = int(input("Escribe el día en el que naciste (ejemplo: 23): "))
 
     if edad < 1:
         print("Ja, ja, ja, me parto contigo")
     else:
+        mes = int(input("Escribe el número del mes en el que naciste (ejemplo: 9): "))
+        dia = int(input("Escribe el día en el que naciste (ejemplo: 23): "))
         anyo = datetime.datetime.now().year
         month = datetime.datetime.now().month
         anyo -= edad
+        cumple = False
         if mes > month:
             anyo -= 1
         elif mes == month:
@@ -110,9 +111,9 @@ def anyoNacimiento():
             elif dia == day:
                 cumple = True
 
-    print("Hola",nombre + ", naciste en el año",anyo)
-    if cumple:
-        print("Enhorabuena, ¡hoy es tu cumple!")
+        print("Hola",nombre + ", naciste en el año",anyo)
+        if cumple:
+            print("Enhorabuena, ¡hoy es tu cumple!")
 
 def tiradaDados():
     print("Dado 1:",random.randint(1,6))

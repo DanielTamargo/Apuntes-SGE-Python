@@ -37,4 +37,3 @@ while tirar:
     eleccion = input("¿Tirar los dados de nuevo? (S/N): ").lower()
     if eleccion == "n" or eleccion == "no":
         tirar = False
-print()

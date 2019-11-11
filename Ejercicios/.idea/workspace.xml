@@ -15,12 +15,9 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
   <component name="ProjectId" id="1TIh21SOuSgfeT4ckX2BAXlivxj" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Gitkraken/Apuntes-SGE-Python/Ejercicios" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -34,7 +31,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pruebas">
+  <component name="RunManager" selected="Python.ejercicios1.6-10">
     <configuration name="ejercicios1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Ejercicios" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -142,9 +139,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ejercicios1.6-10" />
         <item itemvalue="Python.pruebas" />
         <item itemvalue="Python.ejercicios1.10-15" />
-        <item itemvalue="Python.ejercicios1.6-10" />
         <item itemvalue="Python.ejercicios1.1-5" />
         <item itemvalue="Python.ejercicios1" />
       </list>
