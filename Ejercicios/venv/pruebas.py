@@ -1,21 +1,23 @@
 import funciones
+import funciones2
 import datetime
 import random
+import sys
 
-numero = 1919191
-numero = str(numero)
-print(numero)
-print(len(numero))
-x = len(numero) - 1
-print(x)
-print(numero[0],numero[1],numero[2])
-es_capicua = True
-for i in range(0, (len(numero) - 1)):
-    if numero[i] != numero[x]:
-        es_capicua = False
-        i = len(numero)
-    x -= 1
-print(es_capicua)
+print("Ejercicio 12 - Lista con numeros desordenados, mostrar de menor a mayor")
+n = int(input("Introduce cuantos números quieres que tenga la lista: "))
+funciones2.lista_desordenada_demenoramayor(n)
+
+print("Ejercicio 7")
+n = int(input("Introduce un número: "))
+funciones2.piramide_entera(n)
+
+
+# clases = {}
+# clases["lunes"] = ['SGE', 'SOM']
+# clases["martes"] = ['SI']
+# print(clases["lunes"][0])
+
 
 # a = "hola"
 # print(len(a)) #sacar longitud string
