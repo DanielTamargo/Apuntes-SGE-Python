@@ -175,10 +175,10 @@ def lista_asignaturas_dam():
     print(linea)
 
 # Crea una lista con números aleatorios, de forma desordenada, va mostrando los números de menor a mayor
-def lista_desordenada_demenoramayor(numero):
+def lista_desordenada_demenoramayor(n):
     v_lista = []
 
-    for i in range(0, numero):
+    for i in range(0, n):
         v_lista.append(random.randint(1,99))
 
     print("Lista de números generada: ")
@@ -198,15 +198,16 @@ def lista_desordenada_demenoramayor(numero):
     minimo = 101
     ultimo = -1
   # FALTA POR ACABAR ESTA PARTE
-    for i in range(0, numero):
+    for i in range(0, n):
         minimo = 101
         for numero in v_lista:
             if minimo > numero > ultimo:
                 minimo = numero
+
         if not primero:
-            linea += ", " + str(numero)
+            linea += ", " + str(minimo)
         else:
-            linea += str(numero)
+            linea += str(minimo)
             primero = False
         ultimo = minimo
     print(linea)
