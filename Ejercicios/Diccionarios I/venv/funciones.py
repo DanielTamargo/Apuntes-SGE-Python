@@ -4,6 +4,6 @@ def es_par(n):
 def es_primo(n):
     for i in range(2, n - 1):
         if n % i == 0:
-            return false
-    return true
+            return False
+    return True
         

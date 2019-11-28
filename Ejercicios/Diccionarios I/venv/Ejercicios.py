@@ -12,9 +12,17 @@ import funciones
 # Funciones en un Diccionario
 diccionario_funciones = {'a' : funciones.es_par, 'b' : funciones.es_primo}
 
-numero = 11
-if diccionario_funciones['a'](numero):
-    print("Es par")
-else:
-    print("Es impar")
+eleccion = input("Introduce 'a' o 'b': ").lower()
 
+numero = 11
+
+if diccionario_funciones[eleccion](numero):
+    if eleccion == "a":
+        print("Es par")
+    else:
+        print("Es primo")
+else:
+    if eleccion == "a":
+        print("Es impar")
+    else:
+        print("No es primo")
