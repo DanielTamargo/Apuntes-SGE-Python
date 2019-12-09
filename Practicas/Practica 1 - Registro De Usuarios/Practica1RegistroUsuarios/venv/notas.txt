@@ -1,0 +1,35 @@
+------------------------------------------------------------------------------------------------------------------------
+# SEGURIDAD DE UNA CONTRASEÑA
+# AÚN W.I.P.
+# Para determinar si una contraseña es segura o no, he seguido un sistema de puntos por secciones:
+
+# Por longitud:
+# 5 - 6 caracteres -------------------------> + 1 puntos
+# 7 - 8 caracteres -------------------------> + 2 puntos
+# 9 o 12 caracteres ------------------------> + 3 puntos
+# 12 o + caracteres ------------------------> + 4 puntos
+
+# Por capitalización:
+# 3 o + minúsculas + 1 mayúscula -----------> + 1 punto
+# 3 o + minúsculas + 2 o más minúsculas ----> + 2 puntos
+# 3 o + mayúsculas + 1 minúscula -----------> + 1 punto
+# 3 o + mayúsculas + 2 o más minúsculas ----> + 2 puntos
+
+# Por símbolos:
+# 1 símbolo -------------------------------> + 2 punto
+# 2 símbolos ------------------------------> + 3 puntos
+# 3 o + símbolos --------------------------> + 4 puntos
+
+# Por números:
+# 1 número ---------------------------------> + 1 punto
+# 2 números --------------------------------> + 2 puntos
+# 3 o + números ----------------------------> + 3 puntos
+
+# Después, en base a los puntos totales:
+# 0 puntos         -----> insegura, obligatorio mejorar
+# 1 - 3 punto(s)   -----> muy débil
+# 4 - 6 puntos     -----> débil
+# 7 puntos         -----> moderada
+# 8 - 9 puntos     -----> fuerte
+# 10 o + puntos    -----> muy fuerte
+------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,249 @@
+Tuplas -> son como las listas, pero los datos no pueden ser modificados
+tupla = ("Hola", "Que tal", 5) -> creación de una tupla, se usan los paréntesis ()
+------------------------------------------------------------------------------------------------------------
+Listas -> guardan datos de diferentes tipos y pueden ser modificados
+
+lista = ["Hola", "Que tal", 5] -> creación de una lista, se usan los corchetes []
+len(lista) -> longitud lista
+lista[0] -> accede al objeto 0 de la lista
+lista3 = lista1 + lista2 -> une dos listas
+lista_vacia = [] -> crea una lista vacía
+lista3 = lista2 -> no hace una copia, sino que señala a los mismos elementos
+
+for x in lista: -> para recorrer la lista
+  print(x)
+
+if 2 in lista: -> para buscar en la lista
+  print("El 2 está en la lista")
+
+i = 0
+while i < len(lista): -> simula el cómo uso fori en Java para recorrer listas
+  print(lista[i])
+  i = i + 1
+
+lista.append(a) -> añade a al final de la lista
+lista.insert(indice, a) -> añade a en el indice que se indique (mientras sea >= 0 y <= len(lista)), desplaza los demás a la derecha
+lista.extend(lista2) -> añade la lista 2 al final de la lista, es igual que lista += lista2
+lista.index(a) -> busca a y devuelve su índice, si no existe, lanza error "ValueError"
+lista.remove(a) -> busca a 
+lista.sort() -> ordena la lista
+lista.reverse() -> invierte el orden de la lista
+lista.pop(indice) -> quita el elemento del indice y lo devuelve
+lista.clear() -> deja vacía la lista
+lista.count(a) -> devuelve el numero de veces que existe a en la lista
+
+print(lista[1:3]) -> mostrará los elementos 1 y 2 de la lista (el segundo y el tercero), funciona como el range
+------------------------------------------------------------------------------------------------------------
+
+Diccionarios -> colección no ordenada de valores a los que se accede a través de una clave
+Las claves son únicas, los valores pueden repetirse.
+No puedes acceder a una clave por el valor
+
+diccionario = {"Valor1":1, "Valor2":2, "Valor3":3, 4:4} -> creación de un diccionario, se usan las llaves {}
+diccionario = {} -> diccionario vacío
+diccionario["Valor1"] = [1] -> podemos añadir elementos manualmente, asignamos clave y su valor o valores
+diccionario["Valor2"] = [2] -> si la clave ya existe, en vez de añadirla al diccionario, sustituiría su valor
+diccionario[3] = [3, 4, 5]
+
+for x in diccionario:
+  print(x, ":", diccionario[x])
+
+for x, valores in clases.items():
+  print(x, ":", valores)
+
+dict() -> sirve también para crear un diccionario
+diccionario = dict(nombre="Dani", apellido="Tamargo", edad=28)
+
+zip() -> recibe dos elementos iterables del mismo tamaño y devuelve un diccionario relacionandolos
+diccionario = dict(zip(["nombre", "apellido"], ["daniel", "tamargo"]))
+
+items() -> devuelve una lista de tuplas, cada tupla será la clave y el valor (si la clave tenía varios valores, el valor será una tupla de los valores)
+items = diccionario.items(9
+
+keys() y values() -> devuelve una lista de claves o de valores
+claves = diccionario.keys()
+valores = diccionario.values()
+
+diccionario.clear() -> deja el diccionario vacío
+dic1 = diccionario.copy() -> hace una copia del diccionario para trabajarlo de manera independiente
+
+fromkeys() -> declaras las claves y les asignas a todas el mismo valor, si lo dejas vacío le asignará none
+diccionario = dict.fromkeys(['a','b','c'], 1)
+
+get() -> es un getter de la clave que le señales
+valor = diccionario.get("nombre")
+
+pop() -> recibe una clave, elimina esa clave y su valor del diccionario, y devuelve el valor
+valor = diccionario.pop("nombre")
+
+setdefault() -> sirve como getter al igual que get() o para añadir un nuevo elemento
+para entenderlo mejor, es un método donde intenta añadir una clave y asignarle un valor, si no existe la clave, la crea y le asigna el valor, y si ya existe, funciona como un getter y devuelve el valor de esa clave
+
+update() -> contrasta un diccionario con otro, si hay claves repetidas, copia el valor del diccionario que le pasamos en el valor del diccionario que usamos el método
+dic1.update(dic2)
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+Strings
+
+mi_cadena = "Hola mundo"
+print(mi_cadena[0:4])
+>>> "Hola"
+print(mi_cadena[1:])
+>>> "ola Mundo"
+print(mi_cadena[:4])
+>>> "Hola"
+
+upper()
+lower()
+capitalize() -> la primera letra en mayúsculas
+swapcase() -> cambia mayúsculas por minúsculas
+title() -> la primera letra de cada palabra en mayúsculas
+
+center(30, "=") -> print(texto.center(30, "=")
+ljust(30, "=") -> igual que center() pero alineando a la izquierda
+rjust(30, "=") -> igual que center() pero alineando a la derecha
+
+zfill(longitud) -> devuelve una copia de la cadena con ceros a la izquierda hasta llegar a la logintud
+count(texto)
+
+find("subcadena"[, posicion_inicial, posicion_final]) -> busca la subcadena, si la encuentra, devuelve el valor donde empieza esa cadena, si no la encuentra devuelve un -1
+
+startswith("subcadena" [, posicion_inicio, posicion_fin])
+endswith("subadena" [, posicion_inicio, posicion_fin])
+
+isalnum() -> saber si una cadena es alfanumérica
+isalpha() -> saber si una cadena es alfabética
+isdigit() -> saber si una cadena es numérica
+islower() -> saber si una cadena sólo tiene minúsculas
+isupper() -> saber si una cadena sólo tiene mayúsculas
+isspace() -> saber si una cadena sólo tiene espacios en blanco
+istitle() -> saber si una cadena tiene formato de título
+
+replace()
+buscar = "Java"
+reemplazar="Python"
+print ("Estoy estudiando Java".replace(buscar, reemplazar))
+>>> Estoy estudiando Python
+
+strip()
+mi_cadena = "       Esta es una cadena de texto         "
+print (mi_cadena.strip())
+>>> Esta es una cadena de texto
+
+lstrip()
+mi_cadena = "www.google.es"
+print (mi_cadena.lstrip("w."))
+>>> google.es
+
+format
+mi_cadena = "Hoy es {0} y voy a estudiar {1}"
+print (mi_cadena.format("viernes","Python"))
+>>> Hoy es viernes y voy a estudiar Python
+
+split()
+mi_cadena = "Python es divertido"
+print(mi_cadena.split())
+>>> ["Python","es","divertido"]
+
+split()
+mi_cadena2 = "Python es, divertido"
+print(mi_cadena.split(","))
+>>> ["Python es","divertido"]
+
+mi_cadena = "Python es divertido"
+print(mi_cadena.partition('es’))
+>>> (‘Python’, ’es’, ‘divertido’)
+print(mi_cadena.partition(‘no’))
+>>> (‘Python es divertido’, ‘’, ‘’)
+
+------------------------------------------------------------------------------------------------------------
+Colores:
+Usando ANSI:
+
+Letras:
+print('\033[36m' + 'some marine blue text')
+print('\033[35m' + 'some bright magenta text')
+print('\033[34m' + 'some blue text')
+print('\033[32m' + 'some yellow text')
+print('\033[31m' + 'some red text')
+print('\033[91m' + 'some bright red text')
+print('\033[90m' + 'some bright black text')
+print('\033[39m') # and reset to default color
+
+Área:
+mismos colores pero desde 41m hasta 49m
+print('\033[49m') # and reset to default color
+
+
+
+Usando colorama:
+
+Primero, instalar colorama en el python de tu pc con el comando: pip install colorama
+Segundo, importar colorama al proyecto de PyCharm: Archivo - Ajustes - Proyecto - Intérprete - Clicar en el + - Añadir Colorama
+
+Y tercero, utilizarlo, ejemplo:
+
+import colorama # <- lo importamos
+colorama.init() # <- lo inicializamos y después lo utilizamos 
+print(colorama.Fore.LIGHTBLACK_EX + "Cambiamos a negro claro")
+print(colorama.Fore.LIGHTMAGENTA_EX + "Cambiamos a morado claro")
+print("Sigue en morado claro")
+print(colorama.Fore.RESET + "Reseteamos al normal")
+
+
+
+Programa:
+
+
+texto = "  TBPG  "
+titulo = "The Best Password Generator"
+linea1 = "Bienvenido a "
+linea2 = "La mejor aplicación actual para generar contraseñas automáticamente"
+linea3 = "A continuación, se te pedirá que marques una serie de parámetros para diseñar tu contraseña"
+linea4 = "Si tienes dudas, quizás no sea tu mejor día, porque la aplicación es sencilla"
+linea4_1 = "Si tienes dudas, pregunta sin miedo :)"
+linea5 = "Gracias por utilizar "
+linea6 = "Es un nombre pegadizo, ¿verdad?"
+
+
+textoNegro_fondoAzulClaro(texto)
+
+print((linea1 + colorama.Fore.BLUE + titulo).center(91, " ") + colorama.Style.RESET_ALL)
+print(linea2.center(91, " "))
+print()
+
+for j in range(0, 3):
+    print("\rCargando", end = "")
+    time.sleep(.5)
+    for i in range(0, 3):
+        print(".", end = "")
+        time.sleep(.5)
+    #sys.stdout.write(CURSOR_UP_ONE)
+    #sys.stdout.write(ERASE_LINE)
+print("\r¡Datos cargados con éxito!", end = "")
+time.sleep(1.35)
+
+print("\r" + linea3)
+time.sleep(1)
+
+print(linea4, end = "")
+time.sleep(2)
+print("\r" + "EJEM, perdón, ha sonado demasiado " + colorama.Fore.RED + colorama.Style.BRIGHT + "hater" + colorama.Style.RESET_ALL + ", déjame volver a intentarlo.", end = "")
+time.sleep(2)
+
+for j in range(0, 2):
+    print("\rRecalibrando", end = "")
+    time.sleep(.5)
+    for i in range(0, 2):
+        print(".", end = "")
+        time.sleep(.5)
+print("\r" + linea4_1)
+print(linea5 + colorama.Fore.BLUE + titulo + colorama.Style.RESET_ALL)
+time.sleep(1)
+print(linea6)
+time.sleep(1)
+
+textoNegro_fondoAzulClaro("")
