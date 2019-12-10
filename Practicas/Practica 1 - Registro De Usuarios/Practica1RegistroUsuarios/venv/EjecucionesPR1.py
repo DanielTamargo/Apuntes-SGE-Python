@@ -8,7 +8,7 @@ import ssl
 
 def textoNegro_fondoAmarillo(linea):
     # Este método recibe una cadena String y la muestra con el color del texto negro y el fondo azul claro
-    # utiliza código ANSI, no hace falta instalar colorama, ni nada
+    # utiliza código ANSI, no hace falta instalar colorama, ni nada (aunque al final no uso este método)
 
     # print('\033[43m') # fondo amarillo
     # print('\033[90m') # texto negro claro
@@ -34,7 +34,7 @@ def textoNegro_fondoAzulClaro(linea):
 
 
 def paripe_inicial():
-    # Una tontería adicional para el proyecto, simula un progreso de carga y da una introducción al programa
+    # Una tontería adicional para el proyecto, simula un progreso de carga y da una introducción 'chula' al programa
     texto = "  TBPG  "
     titulo = "The Best Password Generator"
     linea1 = "Bienvenido a "
@@ -87,13 +87,13 @@ def paripe_inicial():
     time.sleep(1.5)
 
     textoNegro_fondoAzulClaro("".center(91, "="))
-    time.sleep(3)
+    time.sleep(2)
     print()
 
 
 def cargar_lista_usuarios():
     # Este método carga los datos del fichero datos.txt y genera dos diccionarios, uno tiene los datos del usuario y el otro
-    # es la lista de usuarios, este último diccionario es el que devuelve
+    # es la lista de usuarios, este último diccionario es el que es devuelto por este método
 
     # f = open("datos.txt", "r") -> lineas = f.readLines() me daba problemas, saltaba el error '_io.TextIOWrapper' object has no attribute 'readLines'
     # https://stackoverflow.com/questions/17569679/python-attributeerror-io-textiowrapper-object-has-no-attribute-split
@@ -116,6 +116,7 @@ def cargar_lista_usuarios():
     diccionario2_elena = dict(contrasenya="_4fas--'Rsk", email="elena.zamora@ikasle.egibide.org")
     diccionario2_kiana = dict(contrasenya="+58!¡asd-'Rsk", email="monicakiana@gmail.com")
     diccionario1_usuarios = dict(zip(["dani", "elena", "kiana"], [diccionario2_dani, diccionario2_elena, diccionario2_kiana]))
+    # return diccionarios1_usuarios <- antes usaba estos datos fijos, después investigué un poco sobre ficheros
     return diccionario_usuarios
 
 
@@ -146,7 +147,7 @@ def lista_usuarios():
 
 
 def usuario():
-    # Este método sirve para crear un usuario, comprueba que no exista ya en los datos y cuando es único, devuelve usuario
+    # Este método sirve para crear un usuario, comprueba que no exista ya en los datos y cuando es único, devuelve usuario (el string)
     diccionario1_usuarios = cargar_lista_usuarios()
 
     existe = True
@@ -164,6 +165,7 @@ def usuario():
         else:
             print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
                   + colorama.Style.RESET_ALL + " No has introducido nada.")
+        print()
     return usuario
 
 
@@ -283,43 +285,62 @@ def contrasenya():
         else:
             repetir = ""
             while repetir == "":
-                repetir = input("¿Seguir adelante o repetir? (s/r): ").lower()[0]
-                if repetir != "s" and repetir != "r":
-                    print("Perdona, no te he entendido. Introduce 's' para seguir o 'r' para repetir.")
+                repetir = input("¿Seguir adelante o repetir? (s/r): ")
+                if repetir is not None and repetir != "":
+                    repetir = repetir.lower()[0]
+                    if repetir != "s" and repetir != "r":
+                        print("Perdona, no te he entendido. Introduce 's' para seguir o 'r' para repetir.")
+                        repetir = ""
+                else:
                     repetir = ""
-
+                    print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
+                          + colorama.Style.RESET_ALL + " No has introducido ninguna respuesta. Debes introducir S o R para marcar Sí o Repetir.")
+                print()
             if repetir == "r":
                 repetir = ""
 
-    print()
+
+
     #### He creado dos métodos para generar contraseñas, ambos son iguales pero uno de ellos tiene una particularidad
     #### El primero, simplemente genera una contraseña aleatoria donde sólo pueden aparecer los parámetros que haya definido
     # como sí, aunque no tienen porqué aparecer
     #### El segundo, genera una contraseña aleatoria igual que el primero, pero la genera una y otra vez hasta obtener una
     # en la que aparezcan (al menos una vez) sí o sí todos y cada uno de los parámetros definidos como sí
     #### Le damos la opción al usuario a escoger cual de los dos métodos utilizar
+    #### Pero también, si el usuario ha seleccionado utilizar solo uno de los parámetros, omitimos el elegir entre ambas opciones
+    # pues si solo puede utilizar, por ejemplo, minúsculas, dará igual que utilice el método que fuerza su aparición o no
+
     forzar = False
-    respuesta = ""
-    while respuesta == "":
-        print("¿Qué método quieres usar para crear la contraseña?")
-        print("a) Básico. No forzar la aparición de todos los parámetros marcados como 'sí'.")
-        print("b) Recomendado. Forzar que aparezcan al menos una vez los parámetros marcados como 'sí'.")
-        respuesta = input("Elige (a/b): ")
-        if respuesta is not None:
-            respuesta = respuesta.lower()[0]
-            if respuesta == "a":
-                forzar = False
-            elif respuesta == "b":
-                forzar = True
+    parametros_usados = 0
+    if minusculas == "s": parametros_usados += 1
+    if mayusculas == "s": parametros_usados += 1
+    if simbolos == "s": parametros_usados += 1
+    if numeros == "s": parametros_usados += 1
+
+    if parametros_usados > 1:
+        respuesta = ""
+        while respuesta == "":
+            print("¿Qué método quieres usar para crear la contraseña?")
+            print("a) Básico. No forzar la aparición de todos los parámetros marcados como 'sí'.")
+            print("b) Recomendado. Forzar que aparezcan al menos una vez los parámetros marcados como 'sí'.")
+            respuesta = input("Elige (a/b): ")
+            if respuesta is not None:
+                respuesta = respuesta.lower()[0]
+                if respuesta == "a":
+                    forzar = False
+                elif respuesta == "b":
+                    forzar = True
+                else:
+                    respuesta = ""
+                    print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
+                          + colorama.Style.RESET_ALL + " Debes introducir S o N para marcar Sí o No.")
             else:
                 respuesta = ""
                 print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
-                      + colorama.Style.RESET_ALL + " Debes introducir S o N para marcar Sí o No.")
-        else:
-            respuesta = ""
-            print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
-                  + colorama.Style.RESET_ALL + " No has introducido ninguna respuesta. Debes introducir S o N para marcar Sí o No.")
-        print()
+                      + colorama.Style.RESET_ALL + " No has introducido ninguna respuesta. Debes introducir S o N para marcar Sí o No.")
+            print()
+    else:
+        forzar = False
 
     # Generar contraseña
     repetir = True
@@ -352,7 +373,7 @@ def contrasenya():
         while respuesta == "":
             print("¿Generar de nuevo?")
             respuesta = input("Respuesta (s/n): ")
-            if respuesta is not None:
+            if respuesta is not None and respuesta != "":
                 respuesta = respuesta.lower()[0]
                 if respuesta == "s" or respuesta == "n":
                     if respuesta == "n":
@@ -441,6 +462,7 @@ def email():
     return email
 
 def guardar_usuario(usuario, contrasenya, email):
+    # Este metodo muestra los datos que se van a guardar, y guarda el nuevo usuario en el fichero
     # Si hubiera que añadirlos al diccionario, sería así
     diccionario_datos_usuario = dict(contrasenya=contrasenya, email=email)
     diccionario_usuarios = cargar_lista_usuarios()
@@ -462,6 +484,7 @@ def guardar_usuario(usuario, contrasenya, email):
 
 
 def enviar_email(usuario, contrasenya, email):
+    # Este método utiliza mi cuenta de correo del instituto para enviar un correo al email introducido con todos sus datos
     print("Intentando mandar el correo...", end="")
     # https://realpython.com/python-send-email/
     port = 465
@@ -500,13 +523,14 @@ def preguntar_mandar_email(usuario, contrasenya, email):
                 enviar_email(usuario, contrasenya, email)
             else:
                 print(
-                    "Perfecto, entonces no mandaremos el email. El programa procederá a finalizarse. Gracias por utilizarlo.")
+                    "Perfecto, entonces no mandaremos el email.")
         else:
             print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
                   + colorama.Style.RESET_ALL + " Debes introducir S o N para marcar Sí o No.")
     else:
         print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
               + colorama.Style.RESET_ALL + " No has introducido un nada :(")
+
 
 def evitar_caracteres_no_soportados_por_ascii(cadena):
     # Este método sustituye los caracteres que darían problemas al enviar el email: ñ ¡ ¿

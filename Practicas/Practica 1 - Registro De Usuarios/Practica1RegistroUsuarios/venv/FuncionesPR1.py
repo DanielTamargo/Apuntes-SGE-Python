@@ -24,13 +24,13 @@ def generar_contrasenya(longitud, minusculas, mayusculas, simbolos, numeros):
     # longitud es tipo int y determina la longitud de la contraseña
     # minusculas, mayusculas, simbolos y numeros son tipo string o char y determinan si se usan o no ('s' o 'n')
 
-    abc = "abcdefghijklmnopqrstuvwxyz" #quito la ñ porque si no da problemas al enviar el email por el acsii
+    abc = "abcdefghijklmnñopqrstuvwxyz" # Cuidado con la ñ si utilizas codificación tipo ascii, un método la convierte si es necesario
     nums = "1234567890"
     simbs = "!¡?¿=_-+*^'"  # Se podrían añadir más, ¡ y ¿ dan problemas por ascii, pero un metodo los convierte cuando es necesario
 
     contrasenya = ""
 
-    for i in range(int(longitud)):
+    while len(contrasenya) < int(longitud):
         x = random.randint(1, 4)
         if x == 1 and minusculas == "s":
             x = random.randint(0, (len(abc) - 1))
@@ -44,8 +44,7 @@ def generar_contrasenya(longitud, minusculas, mayusculas, simbolos, numeros):
         elif x == 4 and numeros == "s":
             x = random.randint(0, (len(nums) - 1))
             contrasenya += nums[x]
-        else:
-            i -= 1
+
 
     return contrasenya
 
@@ -54,7 +53,7 @@ def generar_contrasenya_forzada(longitud, minusculas, mayusculas, simbolos, nume
     # Este método es igual que generar_contrasenya pero en este caso,
     # fuerza el insertar al menos una vez los parámetros definidos como sí
 
-    abc = "abcdefghijklmnopqrstuvwxyz" #quito la ñ porque si no da problemas al enviar el email por el acsii
+    abc = "abcdefghijklmnñopqrstuvwxyz" # Cuidado con la ñ si utilizas codificación tipo ascii, un método la convierte si es necesario
     nums = "1234567890"
     simbs = "!?=_-+*^'¡¿"  # Se podrían añadir más, ¡ y ¿ dan problemas por ascii, pero un metodo los convierte cuando es necesario
 
@@ -67,6 +66,7 @@ def generar_contrasenya_forzada(longitud, minusculas, mayusculas, simbolos, nume
 
     # El bucle se repetirá mientras alguno sea falso, los parámetros definidos como 'no' serán verdaderos, y los parámetros
     # que aparezcan serán verdadero también
+    contrasenya = ""
     while min == False or may == False or sim == False or num == False:
         # Reseteamos por si el bucle reinicia
         min = False
@@ -80,7 +80,7 @@ def generar_contrasenya_forzada(longitud, minusculas, mayusculas, simbolos, nume
         if minusculas == "n":
             min = True
         if mayusculas == "n":
-            min = True
+            may = True
         if simbolos == "n":
             sim = True
         if numeros == "n":
@@ -88,7 +88,7 @@ def generar_contrasenya_forzada(longitud, minusculas, mayusculas, simbolos, nume
 
         contrasenya = ""
 
-        for i in range(int(longitud)):
+        while len(contrasenya) < int(longitud):
             x = random.randint(1, 4)
             if x == 1 and minusculas == "s":
                 x = random.randint(0, (len(abc) - 1))
@@ -106,8 +106,7 @@ def generar_contrasenya_forzada(longitud, minusculas, mayusculas, simbolos, nume
                 x = random.randint(0, (len(nums) - 1))
                 contrasenya += nums[x]
                 num = True
-            else:
-                i -= 1
+
 
     return contrasenya
 
@@ -131,7 +130,7 @@ def nivel_seguridad_contrasenya(contrasenya):
     puntuacion_seguridad = 0
 
     puntuacion_longitud = 0
-    # Longitud (débil, moderado, fuerte o muy fuerte
+    # Longitud (débil, moderado, fuerte o muy fuerte)
     if len(contrasenya) < 7:
         puntuacion_longitud = 1
     elif len(contrasenya) < 9:
@@ -157,7 +156,7 @@ def nivel_seguridad_contrasenya(contrasenya):
     # Capitalización (muy débil, débil o fuerte):
     numero_de_minusculas = 0
     numero_de_mayusculas = 0
-    abc = "abcdefghijklmnopqrstuvwxyz" #quito la ñ porque si no da problemas al enviar el email por el acsii
+    abc = "abcdefghijklmnñopqrstuvwxyz"
 
     for i in range(len(contrasenya)):
         if contrasenya[i] in abc:
@@ -188,8 +187,7 @@ def nivel_seguridad_contrasenya(contrasenya):
     puntuacion_seguridad += puntuacion_capitalizacion
 
     # Símbolos (débil, moderado, fuerte o muy fuerte)
-    simbs = "!?=_-+*^'¡¿"  # Se podrían añadir más, no añadir la coma, se usa para sacar los datos del fichero
-                           # ¡ y ¿ dan problemas con el email, pero existe un método que los convierte a la inversa
+    simbs = "!?=_-+*^'¡¿"
     numero_de_simbolos = 0
 
     for i in range(len(contrasenya)):
@@ -218,7 +216,7 @@ def nivel_seguridad_contrasenya(contrasenya):
 
     puntuacion_seguridad += puntuacion_simbolos
 
-    # Números (débil, moderado o fuerte)
+    # Números (débil, moderado, fuerte o muy fuerte)
     nums = "1234567890"
     numero_de_numeros = 0
 
@@ -269,7 +267,7 @@ def nivel_seguridad_contrasenya(contrasenya):
 
 
 
-
+# Este último método es un intento de borrar líneas que ya se hubiesen mostrado en pantalla, pero no funciona
 #print("\033[1;37;40m Bright Colour\033[0;37;40m \n")
 def intentando_borrar_lineas():
     CURSOR_UP_ONE = '\x1b[1A'

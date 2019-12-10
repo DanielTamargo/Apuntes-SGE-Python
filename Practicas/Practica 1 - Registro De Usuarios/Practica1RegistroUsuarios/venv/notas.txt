@@ -1,32 +1,53 @@
+########################################### NOTAS VARIAS SOBRE EL PROYECTO: ###########################################
+### Leo los datos de un fichero (y también escribo los nuevos datos en él)
+### Al leer los datos, creo dos diccionarios (uno dentro de otro)
+# - Diccionario1: la clave será cada usuario y el valor un Diccionario2 enlazado a ese valor
+# - Diccionario2: guardará los datos, las claves serán por ejemplo los atributos, y los valores sus respectivos valores
+
+### He refactorizado y convertido en métodos casi todos los pasos, punto por punto, pero los he movido al
+# fichero EjecucionesPR1.py, porque en python no puedes crear métodos debajo, necesita que existan encima, así que
+# los he movido a ese otro fichero y los llamo desde aquí
+
+### Utilizo colorama, ya está importado en el proyecto, pero si no lo tienes instalado en tu Python, debes hacerlo
+# - Obligatorio, instalar colorama en el python de tu pc con el siguiente comando (en la consola de windows cmd):
+# pip install colorama
+### Después, importar colorama al proyecto de PyCharm (esto ya está hecho en este proyecto):
+# Archivo -> Ajustes -> Proyecto -> Intérprete -> Clicar en el + -> Buscar y Añadir Colorama
+# Después simplemente realizas un import colorama y ya puedes utilizarlo
+
+### EjecucionesPR1.py contiene las refactorizaciones de las líneas de código que estaba ejecutando en Main, así podemos
+comentar cualquiera de los pasos.
+### FuncionesPR1.py contiene varias funciones, por ejemplo, generar_contrasenya() que devuelve una contraseña aleatoria
+basada en los parámetros definidos por el usuario. Existen más métodos.
 ------------------------------------------------------------------------------------------------------------------------
-# SEGURIDAD DE UNA CONTRASEÑA
-# AÚN W.I.P.
+######################################## CRITERIO SEGURIDAD DE UNA CONTRASEÑA: ########################################
+# AÚN W.I.P. (habría que retocar algunos puntos, pero lo veo más o menos viable)
 # Para determinar si una contraseña es segura o no, he seguido un sistema de puntos por secciones:
 
-# Por longitud:
+### Por longitud:
 # 5 - 6 caracteres -------------------------> + 1 puntos
 # 7 - 8 caracteres -------------------------> + 2 puntos
 # 9 o 12 caracteres ------------------------> + 3 puntos
 # 12 o + caracteres ------------------------> + 4 puntos
 
-# Por capitalización:
+### Por capitalización:
 # 3 o + minúsculas + 1 mayúscula -----------> + 1 punto
 # 3 o + minúsculas + 2 o más minúsculas ----> + 2 puntos
 # 3 o + mayúsculas + 1 minúscula -----------> + 1 punto
 # 3 o + mayúsculas + 2 o más minúsculas ----> + 2 puntos
 
-# Por símbolos:
-# 1 símbolo -------------------------------> + 2 punto
-# 2 símbolos ------------------------------> + 3 puntos
-# 3 o + símbolos --------------------------> + 4 puntos
+### Por símbolos:
+# 1 símbolo --------------------------------> + 2 punto
+# 2 símbolos -------------------------------> + 3 puntos
+# 3 o + símbolos ---------------------------> + 4 puntos
 
-# Por números:
+### Por números:
 # 1 número ---------------------------------> + 1 punto
 # 2 números --------------------------------> + 2 puntos
 # 3 o + números ----------------------------> + 3 puntos
 
-# Después, en base a los puntos totales:
-# 0 puntos         -----> insegura, obligatorio mejorar
+### Después, en base a los puntos totales:
+# 0 puntos         -----> insegura, obligatorio mejorar (este caso no se puede dar, obliga a que la longitud sea 5)
 # 1 - 3 punto(s)   -----> muy débil
 # 4 - 6 puntos     -----> débil
 # 7 puntos         -----> moderada
