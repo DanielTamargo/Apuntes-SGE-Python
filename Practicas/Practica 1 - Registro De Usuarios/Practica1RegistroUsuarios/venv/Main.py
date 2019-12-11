@@ -28,34 +28,193 @@ email = "danieltamargosaiz@gmail.com"
 ### Ojo, estos datos son solo los que irías pidiendo al usuario por pantalla, los datos cargados los carga desde
 # el fichero datos.txt. Esos datos se muestran con el método EjecucionesPR1.lista_usuarios()
 # -----------------------------------------------------  PRÁCTICA  -----------------------------------------------------
+
+# Quizás utilice esto en una modificación del proyecto
+c = dict(c=colorama.Fore.CYAN, lm=colorama.Fore.LIGHTMAGENTA_EX, r=colorama.Fore.RESET)
+
+switcher = {
+    1: "paripe_inicial", # Paso extra 1. Una simulación de entrada y carga de la aplicación
+    2: "lista_usuarios", # Paso extra 2. Mostrar la lista de usuarios y sus datos
+    3: "nuevo_usuario", # Punto 1. Usuario + comprobar que sea único
+    4: "generar_contrasenya", # Puntos 2 y 3. Contraseña + nivel de seguridad
+    5: "nuevo_email", # Punto 4. Email + comprobar que sea válido
+    6: "guardar_usuario", # Punto 5. Mostrar y guardar los datos nuevos
+    7: "convertir_ascii", # Este paso extra 3 es solo si quieres usar el envío del email en ascii
+    8: "mandar_email" # Punto 6 (opcional). Enviar correo con los datos
+}
+
+# print(switcher[1])
+
+# funciones = {"paripe_inicial": "EjecucionesPR1.lista_usuarios()", "lista_usuarios": EjecucionesPR1.lista_usuarios()}
+
+# funciones = dict(zip(["paripe_inicial", "lista_usuarios", "nuevo_usuario", "generar_contrasenya", "nuevo_email", "guardar_usuario", "convertir_ascii", "mandar_email"], [EjecucionesPR1.paripe_inicial(), EjecucionesPR1.lista_usuarios(), EjecucionesPR1.usuario(), EjecucionesPR1.contrasenya(), EjecucionesPR1.email(), EjecucionesPR1.guardar_usuario(usuario, contrasenya, email), EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(texto), EjecucionesPR1.preguntar_mandar_email(usuario, contrasenya, email)]))
+
+print(colorama.Fore.CYAN + "Datos iniciales por si quieres enviar el email o guardar usuario sin tener que crear un usuario, contraseña e email nuevos:\n"
+                           "Usuario: " + colorama.Fore.RESET + usuario + colorama.Fore.CYAN + "\nContraseña: " + colorama.Fore.RESET + contrasenya + colorama.Fore.CYAN + "\nEmail: " + colorama.Fore.RESET + email + "\n\n")
+
+bucle = True
+while bucle:
+    print(colorama.Fore.CYAN + "Menú:" + colorama.Fore.RESET)
+    print(colorama.Fore.LIGHTMAGENTA_EX + "1. " + colorama.Fore.RESET + "Paripé inicial.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "2. " + colorama.Fore.RESET + "Lista usuarios.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "3. " + colorama.Fore.RESET + "Nuevo usuario.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "4. " + colorama.Fore.RESET + "Generar contraseña.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "5. " + colorama.Fore.RESET + "Nuevo email.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "6. " + colorama.Fore.RESET + "Guardar usuario.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "7. " + colorama.Fore.RESET + "Convertir datos o cadena a ascii.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "8. " + colorama.Fore.RESET + "Mandar email.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "9. " + colorama.Fore.RESET + "Salir.")
+    numero = input("Introduce una opción: ")
+    print()
+    if FuncionesPR1.es_un_numero(numero):
+        numero = int(numero)
+        if numero == 1:
+            EjecucionesPR1.paripe_inicial()
+        elif numero == 2:
+            EjecucionesPR1.lista_usuarios()
+        elif numero == 3:
+            usuario = EjecucionesPR1.usuario()
+        elif numero == 4:
+            contrasenya = EjecucionesPR1.contrasenya()
+        elif numero == 5:
+            email = EjecucionesPR1.email()
+        elif numero == 6:
+            EjecucionesPR1.guardar_usuario(usuario, contrasenya, email)
+        elif numero == 7:
+            print("Ascii no soporta ni las tildes, ni la ñ, ni ¡ o ¿ o ´, con este método sustituirás esos caracteres por su similar aceptable.")
+            print("¿Quieres convertir usuario, email y contraseña a ascii o quieres convertir una cadena que introduzcas tu?")
+            print(colorama.Fore.LIGHTMAGENTA_EX + "a) " + colorama.Fore.RESET + "Convertir datos a guardar o enviar por email.")
+            print(colorama.Fore.LIGHTMAGENTA_EX + "b) " + colorama.Fore.RESET + "Convertir una cadena de texto cualquiera.")
+            respuesta = ""
+            respuesta = input("Opción (a/b): ")
+            if respuesta is not None and respuesta != "":
+                respuesta = respuesta.lower()[0]
+                if respuesta == "a" or respuesta == "b":
+                    print()
+                    if respuesta == "a":
+                        usuar_bckup = usuario
+                        contr_bckup = contrasenya
+                        email_bckup = email
+                        print(colorama.Fore.CYAN + "Datos antes de convertir: " + colorama.Fore.RESET + usuario + ", " + contrasenya + ", " + email)
+                        usuario = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(usuario)
+                        contrasenya = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(contrasenya)
+                        email = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(email)
+                        print(colorama.Fore.CYAN + "Datos después de convertir: " + colorama.Fore.RESET + usuario + ", " + contrasenya + ", " + email)
+                        if usuar_bckup == usuario and contr_bckup == contrasenya and email_bckup == email:
+                            print(colorama.Fore.LIGHTMAGENTA_EX + "No ha habido ningún cambio.")
+                        else:
+                            print("¿Quieres mantener los cambios?.")
+                            respuesta = ""
+                            respuesta = input("Opción (s/n): ")
+                            if respuesta is not None and respuesta != "":
+                                respuesta = respuesta.lower()[0]
+                                if respuesta == "s":
+                                    print("Los cambios se mantendrán.")
+                                elif respuesta == "n":
+                                    print("Cambios revertidos.")
+                                    usuario = usuar_bckup
+                                    contrasenya = contr_bckup
+                                    email = email_bckup
+                                else:
+                                    print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                                          + colorama.Style.RESET_ALL + " No te he entendido :( vuelve a intentarlo introduciendo s o n.\n")
+                            else:
+                                print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                                      + colorama.Style.RESET_ALL + " ¡No has introducido nada! vuelve a intentarlo introduciendo s o n.\n")
+                    else:
+                        print("Introduce una cadena de texto a convertir en ascii (introduce tildes o ñ ¡ ¿)")
+                        respuesta = ""
+                        respuesta = input("Cadena de texto: ")
+                        if respuesta is not None and respuesta != "":
+                            print(colorama.Fore.CYAN + "Cadena antes de convertir: " + colorama.Fore.RESET + respuesta)
+                            respuesta = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(respuesta)
+                            print(colorama.Fore.CYAN + "Datos después de convertir: " + colorama.Fore.RESET + respuesta)
+                        else:
+                            print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                                  + colorama.Style.RESET_ALL + " ¡No has introducido nada! vuelve a intentarlo introduciendo s o n.\n")
+                else:
+                    print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                          + colorama.Style.RESET_ALL + " No te he entendido :( vuelve a intentarlo introduciendo a o b.\n")
+            else:
+                print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                      + colorama.Style.RESET_ALL + " ¡No has introducido nada! vuelve a intentarlo introduciendo a o b.\n")
+            print()
+        elif numero == 9:
+            print("Fin del programa, gracias por utilizar " + colorama.Fore.LIGHTCYAN_EX + "The Best Password Generator"
+                  + colorama.Fore.RESET + ".")
+            bucle = False
+        else:
+            print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                  + colorama.Style.RESET_ALL + " Introduce un número del 1 al 9.\n")
+    else:
+        print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
+              + colorama.Style.RESET_ALL + " No has introducido un número.\n")
+
+'''
+bucle = True
+while bucle:
+    print(colorama.Fore.CYAN + "Menú:" + colorama.Fore.RESET)
+    print(colorama.Fore.LIGHTMAGENTA_EX + "1. " + colorama.Fore.RESET + "Paripé inicial.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "2. " + colorama.Fore.RESET + "Lista usuarios.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "3. " + colorama.Fore.RESET + "Nuevo usuario.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "4. " + colorama.Fore.RESET + "Generar contraseña.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "5. " + colorama.Fore.RESET + "Nuevo email.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "6. " + colorama.Fore.RESET + "Guardar usuario.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "7. " + colorama.Fore.RESET + "Convertir cadena a ascii.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "8. " + colorama.Fore.RESET + "Mandar email.")
+    print(colorama.Fore.LIGHTMAGENTA_EX + "9. " + colorama.Fore.RESET + "Salir.")
+    numero = input("Introduce una opción: ")
+    if FuncionesPR1.es_un_numero(numero):
+        numero = int(numero)
+        if 1 <= numero <= 8:
+            if numero == 3:
+                usuario = funciones[switcher[3]]
+            elif numero == 4:
+                contrasenya = funciones[switcher[4]]
+            elif numero == 5:
+                contrasenya = funciones[switcher[5]]
+            else:
+                funciones[switcher[numero]]
+        elif numero == 9:
+            print("Fin del programa, gracias por utilizar " + colorama.Fore.LIGHTCYAN_EX + "The Best Password Generator"
+                  + colorama.Fore.RESET + ".")
+            bucle = False
+        else:
+            print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
+                  + colorama.Style.RESET_ALL + " Introduce un número del 1 al 8.\n")
+    else:
+        print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
+              + colorama.Style.RESET_ALL + " No has introducido un número.\n")
+'''
+
 # Paso extra 1. Una simulación de entrada y carga de la aplicación
-EjecucionesPR1.paripe_inicial()    #<- desactiva esta para no andar esperando con los time.sleep()
+#EjecucionesPR1.paripe_inicial()    #<- desactiva esta para no andar esperando con los time.sleep()
 
 # Paso extra 2. Mostrar la lista de usuarios y sus datos
-EjecucionesPR1.lista_usuarios()
+#EjecucionesPR1.lista_usuarios()
 
 # Punto 1. Usuario + comprobar que sea único
-usuario = EjecucionesPR1.usuario()
+#usuario = EjecucionesPR1.usuario()
 
 # Puntos 2 y 3. Contraseña + nivel de seguridad
-contrasenya = EjecucionesPR1.contrasenya()
+#contrasenya = EjecucionesPR1.contrasenya()
 
 # Punto 4. Email + comprobar que sea válido
-email = EjecucionesPR1.email()
+#email = EjecucionesPR1.email()
 
 # Punto 5. Mostrar y guardar los datos
-EjecucionesPR1.guardar_usuario(usuario, contrasenya, email)
+#EjecucionesPR1.guardar_usuario(usuario, contrasenya, email)
 
 # Este paso extra 3 es solo si quieres usar el envío del email en ascii (recomiendo simplemente configurarlo a UTF-8
 # Paso extra 3. Método adicional para evitar caracteres no soportados por ascii (ñ, ¡, ¿) (por si dejas la configuración ascii en smtplib.py)
 # si los usas tienes que cambiarle los parámetros que le mandas a la función que hay debajo (preguntar_mandar_email)
-usuario_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(usuario)
-contrasenya_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(contrasenya)
-email_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(email)
+#usuario_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(usuario)
+#contrasenya_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(contrasenya)
+#email_ascii = EjecucionesPR1.evitar_caracteres_no_soportados_por_ascii(email)
 
 # Punto 6 (opcional). Enviar correo con los datos (el método pregunta al usuario si quiere mandar el correo o no)
 # OJO, tengo configurado smtplib.py como UTF-8 pero de normal viene como ASCII, si da problemas tienes que cambiar esto:
 # External Libraries -> Python 3.8 -> Lib -> smtplib.py -> buscar: msg = _fix_eols(msg).encode('ascii') y cambiar ascii por UTF-8
-EjecucionesPR1.preguntar_mandar_email(usuario, contrasenya, email)
-print("Fin del programa, gracias por utilizar " + colorama.Fore.LIGHTCYAN_EX + "The Best Password Generator"
-      + colorama.Fore.RESET + ".")
+#EjecucionesPR1.preguntar_mandar_email(usuario, contrasenya, email)
+#print("Fin del programa, gracias por utilizar " + colorama.Fore.LIGHTCYAN_EX + "The Best Password Generator"
+#      + colorama.Fore.RESET + ".")

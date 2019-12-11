@@ -161,6 +161,7 @@ def usuario():
                 print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Ups!"
                       + colorama.Style.RESET_ALL + " Ese nombre de usuario ya existe :(")
             else:
+                print("Perfecto, el usuario " + colorama.Fore.LIGHTBLUE_EX + usuario + colorama.Fore.RESET + " está disponible.")
                 existe = False
         else:
             print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
@@ -534,7 +535,32 @@ def preguntar_mandar_email(usuario, contrasenya, email):
 
 def evitar_caracteres_no_soportados_por_ascii(cadena):
     # Este método sustituye los caracteres que darían problemas al enviar el email: ñ ¡ ¿
-    dic_correciones = {"ñ": "n", "¡": "!", "¿": "?"}
+
+    dic_correciones = {"ñ": "n", 
+                       "¡": "!", 
+                       "¿": "?",
+                       "´": "`",
+                       "á": "a",
+                       "à": "a",
+                       "é": "e",
+                       "è": "e",
+                       "í": "i",
+                       "ì": "i",
+                       "ó": "o",
+                       "ò": "o",
+                       "ú": "u",
+                       "ù": "u",
+                       "Á": "A",
+                       "À": "A",
+                       "É": "E",
+                       "È": "E",
+                       "Í": "I",
+                       "Ì": "I",
+                       "Ó": "O",
+                       "Ò": "O",
+                       "Ú": "U",
+                       "Ù": "U"
+                       }
     cadena = str(cadena)
     #print(cadena)
     for i in range(len(cadena)):
