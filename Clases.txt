@@ -1,0 +1,39 @@
+class Vehiculo():
+
+  #Constructor
+  def __init__(self, matricula, ruedas, color):
+    self.matricula = matricula
+    self.ruedas = ruedas
+    self.color = color
+
+  #Getters y Setters
+  def getMatricula(self):
+    return self.matricula
+  def getRuedas(self):
+    return self.ruedas
+ 
+  def setMatricula(self, matricula):
+     self.matricula = matricula
+
+
+
+v = Vehiculo('123ABC', 4, 'azul')
+print("Datos del vehículo:", v.matricula, v.ruedas, v.color)
+
+-------------------------------------------------------------------------------------
+class Alumno():
+  nombre = 'Alumno'
+  apellido = 'ApellidoAlumno'
+  DNI = 'XXXXXXXXX'
+
+
+
+a = Alumno()
+print("Datos del alumno:", a.nombre, a.apellido, a.DNI)
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
