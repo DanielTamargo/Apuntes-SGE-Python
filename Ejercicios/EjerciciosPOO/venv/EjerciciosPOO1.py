@@ -140,7 +140,7 @@ class Agenda():
     def editContacto(self, index, contacto):
         self.contacto[index] = contacto
 
-    
+
 
 
 
