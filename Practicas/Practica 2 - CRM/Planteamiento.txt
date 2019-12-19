@@ -1,0 +1,26 @@
+-- Clientes
+DNI
+Nombre
+Apellidos
+Fecha Nac ? Date? Edad?
+TipoCliente (cliente, sponsor, proveedor)
+
+-- TipoEtapas ENUM
+Nuevo, Calificado, Propuesta, Ganadas, Abortadas?
+
+-- Actividades
+Descripcion
+Fecha planificacion
+Fecha vencimiento
+TipoActividad (reunión, llamada, promoción, informe)
+TipoEtapa
+
+-- Informes
+Los gráficos a mostrar con los datos que tenemos
+
+
+
+
+
+
+
