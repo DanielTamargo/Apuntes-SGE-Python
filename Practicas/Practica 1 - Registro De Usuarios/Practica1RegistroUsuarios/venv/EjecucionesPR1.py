@@ -469,7 +469,7 @@ def guardar_usuario(usuario, contrasenya, email):
     diccionario_usuarios = cargar_lista_usuarios()
     diccionario_usuarios[usuario] = diccionario_datos_usuario
 
-    print("Datos que se van a guardar:")
+    print(colorama.Fore.LIGHTCYAN_EX + "Datos que se van a guardar:" + colorama.Fore.RESET)
     print("Usuario: {0}".format(usuario))
     print("Contraseña: {0}".format(contrasenya))
     print("Email: {0}".format(email))
@@ -483,6 +483,7 @@ def guardar_usuario(usuario, contrasenya, email):
     f.write(linea + "\n")
     f.close()
 
+    print(colorama.Fore.LIGHTCYAN_EX + "¡Datos guardados!\n" + colorama.Fore.RESET)
 
 def enviar_email(usuario, contrasenya, email):
     # Este método utiliza mi cuenta de correo del instituto para enviar un correo al email introducido con todos sus datos
