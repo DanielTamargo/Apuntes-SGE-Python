@@ -1,0 +1,3 @@
+informe1,act1,(dani,elena),(irune,gusta)
+informe2,act2,(sveta),(asier)
+informe3,act3,(),()

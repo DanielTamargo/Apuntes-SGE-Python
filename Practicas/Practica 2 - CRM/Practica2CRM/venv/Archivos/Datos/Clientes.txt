@@ -1,0 +1,4 @@
+dani,72831820C,Daniel,Tamargo Saiz,danieltamargosaiz@gmail.com,1995-09-23,Cliente
+elena,66666666A,Elena,Zamora Blanco,elenazamora@gmail.com,1996-10-15,Sponsor
+ander,11111111B,Ander,Zugasti Garc�a,anderzugasti@gmail.com,1993-05-25,Proveedor
+sveta,22222222C,Svitlana,Vykhor,svetavykhor@gmail.com,1990-02-10,Proveedor

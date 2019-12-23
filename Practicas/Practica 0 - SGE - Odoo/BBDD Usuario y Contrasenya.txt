@@ -1,0 +1,4 @@
+Usuario y contraseña de la base de datos compartida:
+
+Usuario: daniel.tamargo@ikasle.egibide.org
+Contraseña: admin

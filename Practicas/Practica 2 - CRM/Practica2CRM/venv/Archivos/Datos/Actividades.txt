@@ -1,0 +1,4 @@
+act1,Primera actividad,2019-12-29,2019-12-21,Llamada,Propuesta
+act2,Segunda actividad,2020-01-14,2019-12-21,Reunion,Nueva
+act3,Tercera actividad,2019-12-29,2019-12-21,Llamada,Propuesta
+act4,No tiene descripci�n.,2019-12-22,2019-12-22,Reunion,Nueva

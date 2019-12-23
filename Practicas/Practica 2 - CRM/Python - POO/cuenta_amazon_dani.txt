@@ -1,0 +1,109 @@
+Cuenta Amazon Prime:
+tamskyishere@hotmail.com
+8gvSj9FAwQB4f2r
+
+
+Discos duros:
+Tipo: SSD
+Tamaño: 2.5 pulgadas (10 cm largo, 7 cm ancho, 0.7 cm grosor)
+Capacidad: 480 - 500Gb
+Posibilidades comunes: 
+- Crucial MX500 (66€): https://www.amazon.es/dp/B0786QNS9B/ref=cm_sw_r_tw_dp_U_x_G74.Db9SHBDPT
+- Samsung 860 EVO (77€): https://www.amazon.es/dp/B078WQT6S6/ref=cm_sw_r_tw_dp_U_x_dV4.DbWWZAZT4 
+- Kingston A400 (48€): https://www.amazon.es/dp/B01N0TQPQB/ref=cm_sw_r_tw_dp_U_x_M14.Db6CR3MZE
+
+Relación: Samsung 860 EVO > Crucial MX500 >>>> Kingston SSD A400
+
+
+También existen los SSD M.2 (NVMe):
+Notas: 
+- Se instalan distinto, tendría que mirarlo (no sé si utilizan directamente una ranura PCI o necesitan un adaptador).
+- Son mucho más rápidos pero se calientan mucho más, a veces se les instala un disipador.
+Posibildad común: Samsung 970 EVO Plus (106€): https://www.amazon.es/dp/B07MFBLN7K/ref=cm_sw_r_tw_dp_U_x_o64.DbA3P2C46
+
+Yo cogería un SSD de 480Gb o 500Gb, también los hay de más tamaño pero obviamente más caros.
+El de Samsung 860 EVO me funciona como un camión, pero el crucial parece solo un poco peor, el Kingston a la puta basura.
+
+
+
+
+
+
+
+
+
+def borrar_cliente(cliente):
+	with open('Datos/Clientes.txt') as f:
+		lista_lineas = [line.rstrip('\n') for line in f]
+		for linea in lista_lineas:
+			datos = linea.split(",")
+			if datos[0] == cliente.id:
+				#linea_a_modificar = linea
+				lista_lineas.remove(linea)
+		#f.close()
+
+	#lista_lineas.remove(linea_a_modificar)
+	
+	with open('Datos/Clientes.txt', 'w+') as f:
+		x = 0
+		for linea in lista_lineas:
+			if x == 0:
+				f.write(str(linea))
+			else:
+				f.write("\n" + str(linea))
+			x += 1
+	
+	#falta borrar la relación con el informe (set null (?), delete on cascade (?))
+
+
+
+def borrar_empleado(empleado):
+	with open('Datos/Empleados.txt') as f:
+		lista_lineas = [line.rstrip('\n') for line in f]
+		for linea in lista_lineas:
+			datos = linea.split(",")
+			if datos[0] == empleado.id:
+				#linea_a_modificar = linea
+				lista_lineas.remove(linea)
+		#f.close()
+	
+	#lista_lineas.remove(linea_a_modificar)
+
+	with open('Datos/Empleados.txt', 'w+') as f:
+		x = 0
+		for linea in lista_lineas:
+			if x == 0:
+				f.write(str(linea))
+			else:
+				f.write("\n" + str(linea))
+			x += 1
+
+	#falta borrar la relación con el informe (set null (?), delete on cascade (?))
+
+
+
+def borrar_actividad(actividad)
+	with open('Datos/Actividades.txt') as f:
+		lista_lineas = [line.rstrip('\n') for line in f]
+		for linea in lista_lineas:
+			datos = linea.split(",")
+			if datos[0] == empleado.id:
+				#linea_a_modificar = linea
+				lista_lineas.remove(linea)
+		#f.close()
+	
+	#lista_lineas.remove(linea_a_modificar)
+
+	with open('Datos/Actividades.txt', 'w+') as f:
+		x = 0
+		for linea in lista_lineas:
+			if x == 0:
+				f.write(str(linea))
+			else:
+				f.write("\n" + str(linea))
+			x += 1
+
+	#falta borrar la relación con el informe (set null (?), delete on cascade (?))
+
+
+

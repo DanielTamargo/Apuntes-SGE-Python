@@ -1,4 +1,5 @@
 -- Clientes
+ID (por si un cliente puede ser cliente y proveedor)
 DNI
 Nombre
 Apellidos
@@ -9,13 +10,25 @@ TipoCliente (cliente, sponsor, proveedor)
 Nuevo, Calificado, Propuesta, Ganadas, Abortadas?
 
 -- Actividades
+ID
 Descripcion
 Fecha planificacion
 Fecha vencimiento
 TipoActividad (reunión, llamada, promoción, informe)
 TipoEtapa
 
+-- 
+
+
 -- Informes
+ID
+Actividad
+Clientes -> Lista (clientes que participan)
+Empleados -> Lista (empleados que administran)
+
+En base a estos atributos, de algún modo, habrá que cuantificar las cosas y mostrar gráficos.
+
+Podemos hacer un gráfico en base a las etapas de las actividades
 Los gráficos a mostrar con los datos que tenemos
 
 
