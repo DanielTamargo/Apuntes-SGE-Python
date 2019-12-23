@@ -1,6 +1,6 @@
 import datetime
 import Clases
-import Archivos.MainEjecuciones as ME
+import MainEjecuciones as ME
 import colorama
 
 # Diccionarios para las opciones
@@ -8,14 +8,14 @@ opciones = {
     "1": ME.menu_empleados, "2": ME.menu_clientes, "3": ME.menu_actividades, "4": ME.menu_informes, "5": ME.menu_extras,
 }
 sub_opciones_informe = {
-    "1":ME.wip,
-    "2":ME.wip,
-    "3":ME.wip,
-    "4":ME.wip }
+    "1":ME.opcion_nuevo_informe,
+    "2":ME.opcion_modificar_informe,
+    "3":ME.opcion_eliminar_informe,
+    "4":ME.opcion_mostrar_graficos }
 sub_opciones = {
-    "1":(ME.opcion_nuevo_empleado, ME.opcion_nuevo_cliente, ME.opcion_nueva_actividad, ME.pasar, ME.wip),
-    "2":(ME.opcion_modificar_empleado, ME.opcion_modificar_cliente, ME.opcion_modificar_actividad, ME.pasar, ME.wip),
-    "3":(ME.opcion_borrar_empleado, ME.opcion_borrar_cliente, ME.opcion_borrar_actividad, ME.pasar, ME.wip) }
+    "1":(ME.opcion_nuevo_empleado, ME.opcion_nuevo_cliente, ME.opcion_nueva_actividad, ME.pasar, ME.opcion_extra_tts),
+    "2":(ME.opcion_modificar_empleado, ME.opcion_modificar_cliente, ME.opcion_modificar_actividad, ME.pasar, ME.opcion_extra_vtt),
+    "3":(ME.opcion_borrar_empleado, ME.opcion_borrar_cliente, ME.opcion_borrar_actividad, ME.pasar, ME.opcion_extra_mibot) }
 c = {
     "lc": colorama.Fore.LIGHTCYAN_EX,
     "lr": colorama.Fore.LIGHTRED_EX,

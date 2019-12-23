@@ -158,7 +158,7 @@ class Actividad():
             self.id = id
 
         if tipoetapa is None:
-            self.tipoetapa = TipoEtapa.Nuevo
+            self.tipoetapa = TipoEtapa.Nueva
         else:
             self.tipoetapa = tipoetapa
 

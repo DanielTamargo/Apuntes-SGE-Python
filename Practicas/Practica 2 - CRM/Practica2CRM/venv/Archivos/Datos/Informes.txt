@@ -1,3 +1,4 @@
 informe1,act1,(dani,elena),(irune,gusta)
 informe2,act2,(sveta),(asier)
-informe3,act3,(),()
+informe3,act3,(sveta),()
+J6Jx9,act1,(elena,ander),(asier)

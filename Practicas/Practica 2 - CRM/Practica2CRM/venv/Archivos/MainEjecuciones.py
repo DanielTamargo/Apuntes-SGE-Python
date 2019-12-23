@@ -1,6 +1,8 @@
 import datetime
-import Archivos.Clases as Clases
-import Archivos.Funciones as Fun
+import Clases as Clases
+import Funciones as Fun
+import MiBot
+
 import colorama
 import re
 
@@ -91,6 +93,7 @@ def tts(texto):
     playsound.playsound(nombre_archivo)
 
 def pedir_numero():
+    c = colores()
     while True:
         a = input("Elección: ")
         if len(str(a)) > 0:
@@ -120,13 +123,15 @@ def pedir_fecha(pregunta):
             if (fecha.lower() == "today" or fecha.lower() == "hoy") and "nacimiento" not in pregunta:
                 fecha_a_devolver = datetime.date.today()
                 return fecha_a_devolver
-            if (fecha.lower() == "dia" or fecha.lower() == "semana" or fecha.lower() == "mes") and "vencimiento" in pregunta:
+            if "vencimiento" in pregunta:
                 if fecha.lower() == "dia":
                     hoy = datetime.date.today()
                     fecha_a_devolver = hoy + datetime.timedelta(days=1)
+                    return fecha_a_devolver
                 elif fecha.lower() == "semana":
                     hoy = datetime.date.today()
                     fecha_a_devolver = hoy + datetime.timedelta(weeks=1)
+                    return fecha_a_devolver
         fecha = fecha.replace(" ","-")
 
         # Día-Mes-Año
@@ -236,8 +241,9 @@ def opcion_modificar_empleado():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(empleados):
+        if 0 <= eleccion < len(empleados):
             empleado = empleados[eleccion]
             nombre = input("Nombre: ")
             apellidos = input("Apellidos: ")
@@ -303,8 +309,9 @@ def opcion_borrar_empleado():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(empleados):
+        if 0 <= eleccion < len(empleados):
             empleado = empleados[eleccion]
             print("{0}Estás a punto de eliminar:{1} {2}{3}".format(c["lc"], c["ly"], str(empleado), c["rst"]))
             respuesta = ""
@@ -366,8 +373,9 @@ def opcion_modificar_cliente():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(clientes):
+        if 0 <= eleccion < len(clientes):
             cliente = clientes[eleccion]
             nombre = input("Nombre: ")
             apellidos = input("Apellidos: ")
@@ -428,13 +436,15 @@ def opcion_borrar_cliente():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(clientes):
+        if 0 <= eleccion < len(clientes):
             cliente = clientes[eleccion]
             print("{0}Estás a punto de eliminar:{1} {2}{3}".format(c["lc"], c["ly"], str(cliente), c["rst"]))
             respuesta = ""
             while respuesta == "":
                 respuesta = input("¿Eliminar? (s/n): ")
+                print()
                 if respuesta != "":
                     respuesta = respuesta.lower()[0]
                     if respuesta == "s":
@@ -460,6 +470,7 @@ def opcion_nueva_actividad():
     respuesta = ""
     tipos_actividades = {"1":Clases.TipoActividad.Reunion, "2":Clases.TipoActividad.Llamada,
                      "3":Clases.TipoActividad.Promocion, "4":Clases.TipoActividad.Informe}
+    tipoactividad = Clases.TipoActividad.Reunion
     while respuesta == "":
         print("Elige un tipo de actividad:")
         print("1. Reunión")
@@ -491,13 +502,14 @@ def opcion_modificar_actividad():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(actividades):
+        if 0 <= eleccion < len(actividades):
             actividad = actividades[eleccion]
-            print("Elige la nueva etapa para la actividad:")
             tipos_etapas = {"1": Clases.TipoEtapa.Nueva, "2": Clases.TipoEtapa.Propuesta,
                             "3": Clases.TipoEtapa.Calificada, "4": Clases.TipoEtapa.Ganada,
                             "5": Clases.TipoEtapa.Suspendida}
+            respuesta = ""
             while respuesta == "":
                 print("Elige la etapa en la que se encuentra la actividad:")
                 print("1. Nueva")
@@ -508,7 +520,7 @@ def opcion_modificar_actividad():
                 respuesta = input("Tipo de etapa: ")
                 if respuesta in tipos_etapas:
                     tipoetapa = tipos_etapas[respuesta]
-                    if tipoactividad == actividad.tipoetapa:
+                    if tipoetapa == actividad.tipoetapa:
                         respuesta = ""
                 else:
                     respuesta = ""
@@ -517,6 +529,7 @@ def opcion_modificar_actividad():
                         print("{0}¡Ey!{1} Estás volviendo a poner la etapa en la que ya estaba la actividad\n".format(c["lr"], c["rst"]))
                     else:
                         print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
+            print()
             print("{0}Estás a punto de guardar los cambios modificando a:{1} {2}{3}".format(c["lc"], c["ly"], str(actividad), c["rst"]))
             respuesta = ""
             while respuesta == "":
@@ -525,7 +538,6 @@ def opcion_modificar_actividad():
                     respuesta = respuesta.lower()[0]
                     if respuesta == "s":
                         actividad.tipoetapa = tipoetapa
-
                         Fun.modificar_actividad(actividad)
                         print(c["lc"] + "¡Actividad modificada correctamente!" + c["rst"])
                     elif respuesta == "n":
@@ -548,8 +560,9 @@ def opcion_borrar_actividad():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(actividades):
+        if 0 <= eleccion < len(actividades):
             actividad = actividades[eleccion]
             print("{0}Estás a punto de eliminar:{1} {2}{3}".format(c["lc"], c["ly"], str(actividad), c["rst"]))
             respuesta = ""
@@ -581,15 +594,16 @@ def opcion_nuevo_informe():
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = eleccion - 1
-        if eleccion >= 0 and eleccion < len(actividades):
+        if 0 <= eleccion < len(actividades):
             actividad = actividades[eleccion]
-
             correcto = False
             lista_empleados_informe = []
+
+            empleados = Fun.cargar_datos_empleados()
             while not correcto:
                 print(c["lc"] + "Selecciona un empleado que administre el informe (o introduce 'salir'):" + c["rst"])
-                empleados = Fun.cargar_datos_empleados()
                 if len(lista_empleados_informe) > 0:
                     for empleado_informe in lista_empleados_informe:
                         if empleado_informe in empleados:
@@ -604,7 +618,9 @@ def opcion_nuevo_informe():
                     print("{0}No{1} quedan empleados que no estén añadidos al informe\n".format(c["r"], c["rst"]))
                     eleccion = "salir"
                 if str(eleccion) != "salir":
-                    if int(eleccion) >= 0 and int(eleccion) < len(empleados):
+                    eleccion = int(eleccion) - 1
+                    print()
+                    if 0 <= int(eleccion) < len(empleados):
                         lista_empleados_informe.append(empleados[eleccion])
                         print("Empleado añadido al informe.")
                         respuesta = ""
@@ -628,7 +644,7 @@ def opcion_nuevo_informe():
             while not correcto:
                 print(c["lc"] + "Selecciona un cliente para que aparezca en el informe (o introduce 'salir'):" + c["rst"])
                 clientes = Fun.cargar_datos_clientes()
-                if len(lista_clientes_informe):
+                if len(lista_clientes_informe) > 0:
                     for cliente_informe in lista_clientes_informe:
                         if cliente_informe in clientes:
                             clientes.remove(cliente_informe)
@@ -642,12 +658,15 @@ def opcion_nuevo_informe():
                     print("{0}No{1} quedan empleados que no estén añadidos al informe\n".format(c["r"], c["rst"]))
                     eleccion = "salir"
                 if str(eleccion) != "salir":
-                    if int(eleccion) >= 0 and int(eleccion) < len(clientes):
+                    eleccion = int(eleccion) - 1
+                    print()
+                    if 0 <= int(eleccion) < len(clientes):
                         lista_clientes_informe.append(clientes[eleccion])
                         print("Cliente añadido al informe.")
                         respuesta = ""
                         while respuesta == "":
                             respuesta = input("¿Quieres añadir más clientes al informe? (s/n): ")
+                            print()
                             if respuesta != "":
                                 if respuesta.lower()[0] == "s":
                                     pass
@@ -672,15 +691,19 @@ def opcion_nuevo_informe():
 def opcion_modificar_informe():
     c = colores()
     print(c["lc"] + "Elige el informe a modificar (o introduce 'salir')" + c["rst"])
+    print()
     informes = Fun.cargar_datos_informes()
     x = 1
     for informe in informes:
-        print("{0}{1}.{2} {3}".format(c["lc"], x, c["rst"], str(actividad)))
+        print("{0}{1}.{2}".format(c["lc"], x, c["rst"]))
+        informe.mostrar_informe()
         x += 1
+    print()
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = int(eleccion) - 1
-        if eleccion >= 0 and eleccion < len(informes):
+        if 0 <= eleccion < len(informes):
             informe = informes[eleccion]
             print(c["lc"] + "Elige cómo modificar el informe (o introduce 'salir')" + c["rst"])
             print("1. Añadir emlpeados")
@@ -689,8 +712,9 @@ def opcion_modificar_informe():
             print("4. Eliminar un cliente")
             eleccion = pedir_numero()
             if str(eleccion) != "salir":
-                eleccion = int(eleccion) - 1
-                if eleccion >= 0 and eleccion <= 4:
+                print()
+                eleccion = int(eleccion)
+                if 0 <= eleccion <= 4:
                     if eleccion == 1:
                         correcto = False
                         lista_empleados_informe = informe.getEmpleados()
@@ -712,11 +736,13 @@ def opcion_modificar_informe():
                                                                                                             c["rst"]))
                                 eleccion = "salir"
                             if str(eleccion) != "salir":
-                                if int(eleccion) >= 0 and int(eleccion) < len(empleados):
+                                eleccion = int(eleccion) - 1
+                                print()
+                                if 0 <= int(eleccion) < len(empleados):
                                     informe.addEmpleado(empleados[eleccion])
-                                    lista_empleados_informe.append(empleados[eleccion])
+                                    #lista_empleados_informe.append(empleados[eleccion])
                                     print("Empleado añadido al informe.")
-
+                                    print()
                                     respuesta = ""
                                     while respuesta == "":
                                         respuesta = input("¿Quieres añadir más empleados al informe? (s/n): ")
@@ -735,7 +761,7 @@ def opcion_modificar_informe():
                             else:
                                 correcto = True
 
-                    if eleccion == 2:
+                    elif eleccion == 2:
                         correcto = False
                         lista_clientes_informe = informe.getClientes()
                         while not correcto:
@@ -756,11 +782,13 @@ def opcion_modificar_informe():
                                                                                                             c["rst"]))
                                 eleccion = "salir"
                             if str(eleccion) != "salir":
-                                if int(eleccion) >= 0 and int(eleccion) < len(clientes):
+                                print()
+                                eleccion = int(eleccion) - 1
+                                if 0 <= int(eleccion) < len(clientes):
                                     informe.addCliente(clientes[eleccion])
-                                    lista_clientes_informe.append(clientes[eleccion])
+                                    #lista_clientes_informe.append(clientes[eleccion])
                                     print("Cliente añadido al informe.")
-
+                                    print()
                                     respuesta = ""
                                     while respuesta == "":
                                         respuesta = input("¿Quieres añadir más clientes al informe? (s/n): ")
@@ -778,11 +806,11 @@ def opcion_modificar_informe():
                                             respuesta = ""
                             else:
                                 correcto = True
-                    if eleccion == 3:
+                    elif eleccion == 3:
                         empleados = informe.getEmpleados()
                         if len(empleados) > 0:
                             print(
-                                c["lc"] + "Selecciona un empleado que administre el informe (o introduce 'salir'):" + c[
+                                c["lc"] + "Selecciona un empleado para eliminarlo del informe (o introduce 'salir'):" + c[
                                     "rst"])
                             x = 1
                             for empleado in empleados:
@@ -790,23 +818,25 @@ def opcion_modificar_informe():
                                 x += 1
                             eleccion = pedir_numero()
                             if str(eleccion) != "salir":
+                                print()
                                 eleccion = int(eleccion) - 1
-                                if eleccion >= 0 and eleccion < len(empleados):
+                                if 0 <= eleccion < len(empleados):
                                     empleado = empleados[eleccion]
-                                    informe.addEmpleado(empleado)
+                                    informe.getEmpleados().remove(empleado)
                                     Fun.modificar_informe(informe)
-                                    print("Empleado añadido al informe.")
+                                    print("Empleado eliminado del informe.")
+                                    print()
                                 else:
                                     print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
                             else:
                                 print("Saliendo del menú...")
                         else:
                             print("{0}No{1} existen empleados que estén añadidos al informe\n".format(c["r"], c["rst"]))
-                    if eleccion == 4:
+                    elif eleccion == 4:
                         clientes = informe.getClientes()
                         if len(clientes) > 0:
                             print(
-                                c["lc"] + "Selecciona un cliente para que aparezca en el informe (o introduce 'salir'):" + c[
+                                c["lc"] + "Selecciona un cliente para eliminarlo del informe (o introduce 'salir'):" + c[
                                     "rst"])
                             x = 1
                             for cliente in clientes:
@@ -814,18 +844,22 @@ def opcion_modificar_informe():
                                 x += 1
                             eleccion = pedir_numero()
                             if str(eleccion) != "salir":
+                                print()
                                 eleccion = int(eleccion) - 1
-                                if eleccion >= 0 and eleccion < len(clientes):
+                                if 0 <= eleccion < len(clientes):
                                     cliente = clientes[eleccion]
-                                    informe.addCliente(cliente)
+                                    informe.getClientes().remove(cliente)
                                     Fun.modificar_informe(informe)
-                                    print("Cliente añadido al informe.")
+                                    print("Cliente eliminado del informe.")
+                                    print()
                                 else:
                                     print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
                             else:
                                 print("Saliendo del menú...")
                         else:
                             print("{0}No{1} existen clientes que estén añadidos al informe\n".format(c["r"], c["rst"]))
+                    else:
+                        print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
                 else:
                     print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
             else:
@@ -841,22 +875,25 @@ def opcion_eliminar_informe():
     informes = Fun.cargar_datos_informes()
     x = 1
     for informe in informes:
-        print("{0}{1}.{2} {3}".format(c["lc"], x, c["rst"], str(actividad)))
+        print("{0}{1}.{2}".format(c["lc"], x, c["rst"]))
+        informe.mostrar_informe()
         x += 1
     eleccion = pedir_numero()
     if str(eleccion) != "salir":
+        print()
         eleccion = int(eleccion) - 1
-        if eleccion >= 0 and eleccion < len(informes):
+        if 0 <= eleccion < len(informes):
             informe = informes[eleccion]
-            print("{0}Estás a punto de eliminar:{1} {2}{3}".format(c["lc"], c["ly"], str(informe), c["rst"]))
+            print("{0}Estás a punto de eliminar el informe:{1} {2}{3}".format(c["lc"], c["ly"], str(informe.getId()), c["rst"]))
             respuesta = ""
             while respuesta == "":
                 respuesta = input("¿Eliminar? (s/n): ")
+                print()
                 if respuesta != "":
                     respuesta = respuesta.lower()[0]
                     if respuesta == "s":
                         Fun.borrar_informe(informe)
-                        print(c["lc"] + "¡Informe eliminad correctamente!" + c["rst"])
+                        print(c["lc"] + "¡Informe eliminado correctamente!" + c["rst"])
                     elif respuesta == "n":
                         print(c["lc"] + "Okay. " + c["rst"] + "El informe no será eliminado")
                     else:
@@ -869,5 +906,91 @@ def opcion_eliminar_informe():
     else:
         print("Saliendo del menú...")
 
+
+def grafico_empleadosyclientes():
+    informes = Fun.cargar_datos_informes()
+    if len(informes) > 0:
+        labels = []
+        empleados_means = []
+        clientes_means = []
+        for informe in informes:
+            labels.append(informe.getId())
+            empleados_means.append(len(informe.getEmpleados()))
+            clientes_means.append(len(informe.getClientes()))
+
+        x = np.arange(len(labels)) # ubicación de los labels
+        width = 0.30 # anchura de las barras
+
+        fig, ax = plt.subplots()
+        rects1 = ax.bar(x - width/2, empleados_means, width, label='Empleados')
+        rects2 = ax.bar(x + width/2, clientes_means, width, label='Clientes')
+
+        # Personalizamos la gráfica un poco más
+        ax.set_ylabel('Número de')
+        ax.set_title('Número de empleados y clientes por informe')
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.legend()
+
+        for rect in rects1:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+        for rect in rects2:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+        fig.tight_layout()
+
+        hoy = datetime.datetime.today()
+        hoy = hoy.strftime("%d-%m-%Y_%H-%M-%S")
+        nombre_archivo = "Imagenes/" + str(hoy) + "_Empleados-Clientes"
+        plt.savefig(nombre_archivo)
+
+        plt.show()
+    else:
+        print("{0}¡Ups!{1} No existen informes actualmente :(\n".format(c["lr"], c["rst"]))
+
+
 def opcion_mostrar_graficos():
-    pass
+    c = colores()
+    print(c["lc"] + "Elige el tipo de gráfico (o introduce 'salir')" + c["rst"])
+    print(c["lm"] + "1. " + c["lc"] + "Clientes y empleados por informe")
+    print(c["lm"] + "2. " + c["lc"] + "Actividades en los últimos 4 meses" + c["rst"])
+    eleccion = pedir_numero()
+    if str(eleccion) != "salir":
+        if int(eleccion) == 1:
+            grafico_empleadosyclientes()
+        elif int(eleccion) == 2:
+            wip()
+        else:
+            print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
+    else:
+        print("Saliendo del menú...")
+
+def opcion_extra_tts():
+    c = colores()
+    print(c["lc"] + "Introduce una cadena de texto que será leída por voz:" + c["rst"])
+    cadena = input("Cadena: ")
+    MiBot.tts(cadena)
+
+def opcion_extra_vtt():
+    c = colores()
+    print(c["lc"] + "Habla:" + c["rst"])
+    cadena = ""
+    while cadena == "":
+        cadena = MiBot.vtt()
+        if cadena != "":
+            print(cadena)
+
+def opcion_extra_mibot():
+    if MiBot.conversacion():
+        print("\nConversación finalizada")

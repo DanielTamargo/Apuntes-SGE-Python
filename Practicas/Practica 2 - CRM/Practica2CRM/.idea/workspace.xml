@@ -26,9 +26,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
-  <component name="RunManager" selected="Python.Pruebas">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Practica2CRM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -104,7 +104,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/Archivos/PruebasHablandoConDaniela.py" />
+      <option name="SCRIPT_NAME" value="D:\Estudios\Proyectos Gitkraken\Apuntes-SGE-Python\Practicas\Practica 2 - CRM\Practica2CRM\venv\Archivos\MiBot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -115,8 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Pruebas" />
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.Pruebas" />
         <item itemvalue="Python.PruebasHablandoConDaniela" />
         <item itemvalue="Python.MainEjecuciones" />
       </list>
@@ -164,30 +164,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="386" y="397" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577033124846" />
-    <state width="970" height="221" key="GridCell.Tab.0.bottom" timestamp="1577122426524">
+    <state width="1327" height="479" key="GridCell.Tab.0.bottom" timestamp="1577140178472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="970" height="221" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577122426524" />
-    <state width="970" height="221" key="GridCell.Tab.0.center" timestamp="1577122426524">
+    <state width="1327" height="479" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577140178472" />
+    <state width="1327" height="479" key="GridCell.Tab.0.center" timestamp="1577140178472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="970" height="221" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577122426524" />
-    <state width="970" height="221" key="GridCell.Tab.0.left" timestamp="1577122426524">
+    <state width="1327" height="479" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577140178472" />
+    <state width="1327" height="479" key="GridCell.Tab.0.left" timestamp="1577140178472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="970" height="221" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577122426524" />
-    <state width="970" height="221" key="GridCell.Tab.0.right" timestamp="1577122426524">
+    <state width="1327" height="479" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577140178472" />
+    <state width="1327" height="479" key="GridCell.Tab.0.right" timestamp="1577140178472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="970" height="221" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577122426524" />
-    <state x="108" y="285" key="SettingsEditor" timestamp="1577126375508">
+    <state width="1327" height="479" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577140178472" />
+    <state x="108" y="285" key="SettingsEditor" timestamp="1577126732356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="108" y="285" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1577126375508" />
-    <state x="503" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1577107791939">
+    <state x="108" y="285" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1577126732356" />
+    <state x="503" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1577126469312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="503" y="354" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577107791939" />
+    <state x="503" y="354" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577126469312" />
     <state x="916" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1577019457034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

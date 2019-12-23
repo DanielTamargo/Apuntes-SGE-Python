@@ -1,4 +1,4 @@
-import Archivos.Clases as Clases
+import Clases as Clases
 import datetime
 import random
 
@@ -142,19 +142,19 @@ def guardar_actividad(actividad):
 
 # Genera una línea (string) para guardarla en el fichero informes.
 def linea_informe(informe):
-    id = str(informe.getId)
-    actividad = str(informe.getActividad.id)
+    id = str(informe.getId())
+    actividad = str(informe.getActividad().id)
 
     clientes = ""
-    if len(informe.getClientes) > 0:
-        for clien in informe.getClientes:
+    if len(informe.getClientes()) > 0:
+        for clien in informe.getClientes():
             clientes += "," + str(clien.id)
         clientes = clientes[(clientes.find(",") + 1):]
     clientes = "(" + clientes + ")"
 
     empleados = ""
-    if len(informe.getEmpleados) > 0:
-        for emple in informe.getEmpleados:
+    if len(informe.getEmpleados()) > 0:
+        for emple in informe.getEmpleados():
             empleados += "," + str(emple.id)
         empleados = empleados[(empleados.find(",") + 1):]
     empleados = "(" + empleados + ")"
@@ -177,7 +177,7 @@ def modificar_informe(informe):
         lista_lineas = [line.rstrip('\n') for line in f]
         for linea in lista_lineas:
             datos = linea.split(",")
-            if datos[0] == informe.getId:
+            if datos[0] == informe.getId():
                 posicion = x
             x += 1
     # f.close()
@@ -281,7 +281,7 @@ def borrar_informe(informe):
         lista_lineas = [line.rstrip('\n') for line in f]
         for linea in lista_lineas:
             datos = linea.split(",")
-            if datos[0] == informe.getId:
+            if datos[0] == informe.getId():
                 # linea_a_modificar = linea
                 lista_lineas.remove(linea)
     # f.close()
@@ -304,7 +304,7 @@ def borrar_cliente_de_informes(cliente):
     for informe in informes:
         clientes = informe.getClientes()
         if cliente in clientes:
-            informe.getClientes.remove(cliente)
+            informe.getClientes().remove(cliente)
             modificar_informe(informe)
 
 # Elimina el empleado de los informes en los que aparezca (y guarda los cambios en el fichero)
@@ -379,7 +379,7 @@ def borrar_actividad(actividad):
         lista_lineas = [line.rstrip('\n') for line in f]
         for linea in lista_lineas:
             datos = linea.split(",")
-            if datos[0] == empleado.id:
+            if datos[0] == actividad.id:
                 # linea_a_modificar = linea
                 lista_lineas.remove(linea)
     # f.close()
@@ -425,6 +425,12 @@ def comprobar_id(id, lista):
             return False
     return True
 
+def comprobar_id_informe(id, lista):
+    for valor in lista:
+        if id == valor.getId():
+            return False
+    return True
+
 # Utiliza la función generar_id y comprueba el id generado para ver que no existe, si no existe, lo asigna
 # Para saber si el id existe o no, utiliza la función comprobar_id
 def generar_id_cliente():
@@ -455,7 +461,7 @@ def generar_id_informe():
     informes = cargar_datos_informes()
     while True:
         id = generar_id()
-        if comprobar_id(id, informes):
+        if comprobar_id_informe(id, informes):
             return id
 
 

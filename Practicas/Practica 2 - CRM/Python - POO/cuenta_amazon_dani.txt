@@ -3,6 +3,31 @@ tamskyishere@hotmail.com
 8gvSj9FAwQB4f2r
 
 
+
+'''
+He estado mirando para usar google cloud speech pero acaba siendo de pago, me darían un año gratis pero no voy a gastar
+el año por toquetear ahora y hacer el tonto, utilizaré el speech_recognition aunque está enfocado al inglés (estoy mirando
+si hay una manera de configurarlo)
+
+client = speech_v1.SpeechClient()
+encoding = enums.RecognitionConfig.AudioEncoding.FLAC
+sample_rate_hertz = 44100
+language_code = 'es-ES'
+config = {'encoding':encoding, 'sample_rate_hertz':sample_rate_hertz, 'language_code':language_code}
+hoy = datetime.datetime.today()
+hoy = hoy.strftime("%d-%m-%Y_%H-%M-%S")
+nombre_archivo = "Audios/" + str(hoy) + "_es-ES_gcs"
+uri = nombre_archivo
+audio = {'uri':uri}
+response = client.recognize(config, audio)
+'''
+
+
+
+
+
+
+
 Discos duros:
 Tipo: SSD
 Tamaño: 2.5 pulgadas (10 cm largo, 7 cm ancho, 0.7 cm grosor)
