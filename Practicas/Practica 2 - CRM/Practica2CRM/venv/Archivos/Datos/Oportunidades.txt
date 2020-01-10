@@ -1,0 +1,4 @@
+opor1,test,(informe1,informe2,informe3),12.500,Nueva
+iK38l,Captación de clientes,(42OAu,Vt4ak,SJSLm),1200,Nueva
+nhs75,Expansión VPNET,(SJSLm,OqUwf,42OAu,iPUEd,jr3XQ,X71Bw),340,Propuesta
+9Pt0T,Proyecto VBKAD,(jr3XQ),340,Suspendida

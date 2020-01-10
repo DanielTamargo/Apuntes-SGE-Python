@@ -1,3 +1,14 @@
 irune,33333333D,Irune,Mendez,irunemendez@gmail.com,1996-01-15,Comercial,Unknown
 asier,44444444E,Asier,Ortiz,asierortiz@gmail.com,1994-01-15,Administrativo,2019-11-25
 gusta,55555555F,Gustavo,Villa,gustavovilla@gmail.com,1989-01-15,Ventas,2018-09-23
+ander,46534872F,Ander,Zugasti,anderzugasti@gmail.com,1989-01-15,RRHH,2018-09-23
+3Y1Gu,39916219H,Ander,Redondo Sanz,AnderRedondoSa@gmail.com,1996-10-10,Administrativo,2019-10-10
+joyEy,39916219H,Santiago,Humilde Blanco,SantiagoHumildeBl@gmail.com,1993-10-23,Ventas,2019-02-04
+DfV3J,00952975Q,Ekaitz,Martínez Clásico,EkaitzMartinezC@gmail.com,1994-04-15,Comercial,2019-04-20
+QynGt,91256957H,Alexsandro,Camargo Fernández,AlexsandroCamargoFe@gmail.com,1989-09-23,Comercial,2019-02-04
+p4CND,91256957H,Mikel,Redondo Clásico,MikelRedondoCl@gmail.com,1996-10-10,Ventas,2019-09-10
+5cp08,00952975Q,Ander,Fernández Martínez,AnderFernandez@gmail.com,1992-11-23,Salud,2019-10-10
+fznv4,93855984E,Ekaitz,Fernández Clásico,EkaitzFernandez@gmail.com,1989-09-23,RRHH,2018-09-10
+90lM7,17740687M,Lorena,Clásico Redondo,LorenaClasicoRe@gmail.com,1994-04-15,Salud,2019-11-23
+7Lh0m,93855984E,Alexsandro,Camargo Humilde,AlexsandroCamargoHu@gmail.com,1996-10-10,Administrativo,2019-09-10
+m4776,00952975Q,Gustavo,Blanco Blanco,GustavoBlancoBla@gmail.com,1993-10-23,RRHH,2019-09-10

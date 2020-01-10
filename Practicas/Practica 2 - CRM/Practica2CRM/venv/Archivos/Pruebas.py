@@ -1,9 +1,28 @@
-import datetime
-import Clases
-import Funciones as Fun
-import time
+#from Archivos import MainEjecuciones as ME
 import MainEjecuciones as ME
-import MiBot
+import datetime
+import dateutil.relativedelta as dr
+import Funciones as Fun
+'''
+import Clases
+
+import time
+'''
 
 
-MiBot.conversacion()
+
+ME.generar_clientes_automatico()
+print()
+
+ME.generar_empleados_automatico()
+print()
+
+ME.generar_actividades_automatico()
+print()
+
+ME.generar_informes_automatico()
+print()
+
+ME.generar_oportunidades_automatico()
+
+

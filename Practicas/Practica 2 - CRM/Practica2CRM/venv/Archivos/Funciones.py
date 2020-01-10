@@ -1,4 +1,6 @@
-import Clases as Clases
+#from Archivos import Clases
+import Clases
+
 import datetime
 import random
 
@@ -57,19 +59,8 @@ def cargar_datos_actividades():
                 tipoactividad = Clases.TipoActividad.Informe
             else:
                 tipoactividad = Clases.TipoActividad.Reunion
-
-            if datos[5] == "Propuesta":
-                tipoetapa = Clases.TipoEtapa.Propuesta
-            elif datos[5] == "Calificado":
-                tipoetapa = Clases.TipoEtapa.Calificado
-            elif datos[5] == "Ganada":
-                tipoetapa = Clases.TipoEtapa.Ganada
-            elif datos[5] == "Suspendida":
-                tipoetapa = Clases.TipoEtapa.Suspendida
-            else:
-                tipoetapa = Clases.TipoEtapa.Nueva
             
-            actividad = Clases.Actividad(datos[1], datos[2], datos[3], tipoactividad, tipoetapa, datos[0])
+            actividad = Clases.Actividad(datos[1], datos[2], datos[3], tipoactividad, datos[0])
             actividades.append(actividad)
 
     return actividades
@@ -115,6 +106,41 @@ def cargar_datos_informes():
 
     return informes
 
+def cargar_datos_oportunidades():
+    informes = cargar_datos_informes()
+
+    oportunidades = []
+    with open('Datos/Oportunidades.txt') as f:
+        lineas = [line.rstrip('\n') for line in f]
+        for linea in lineas:
+            id_oportunidad = linea[0:linea.find(",")]
+            nombre_oportunidad = linea[(linea.find(",") + 1):(linea.find("(") - 1)]
+            ids_informes_oportunidad = linea[(linea.find("(") + 1):linea.find(")")].split(",")
+            dinero_estimado = linea[(linea.find(")") + 2):linea.rfind(",")]
+            nombre_tipoetapa = linea[(linea.rfind(",") + 1):]
+
+            lista_informes_opourtunidad = []
+            for id_informe_oportunidad in ids_informes_oportunidad:
+                for informe in informes:
+                    if id_informe_oportunidad == informe.getId():
+                        lista_informes_opourtunidad.append(informe)
+
+            if nombre_tipoetapa == "Propuesta":
+                tipoetapa = Clases.TipoEtapa.Propuesta
+            elif nombre_tipoetapa == "Calificado":
+                tipoetapa = Clases.TipoEtapa.Calificado
+            elif nombre_tipoetapa == "Ganada":
+                tipoetapa = Clases.TipoEtapa.Ganada
+            elif nombre_tipoetapa == "Suspendida":
+                tipoetapa = Clases.TipoEtapa.Suspendida
+            else:
+                tipoetapa = Clases.TipoEtapa.Nueva
+
+            oportunidad = Clases.Oportunidad(str(nombre_oportunidad), lista_informes_opourtunidad, str(dinero_estimado), tipoetapa, id_oportunidad)
+            oportunidades.append(oportunidad)
+
+    return oportunidades
+
 def guardar_cliente(cliente):
     linea = "{0},{1},{2},{3},{4},{5},{6}".format(str(cliente.id),str(cliente.dni),str(cliente.nombre),
                                                  str(cliente.apellidos),str(cliente.email),
@@ -133,9 +159,8 @@ def guardar_empleado(empleado):
     f.close()
 
 def guardar_actividad(actividad):
-    linea = "{0},{1},{2},{3},{4},{5}".format(str(actividad.id),str(actividad.descripcion),str(actividad.fecha_vencimiento),
-                                                 str(actividad.fecha_planificacion),str(actividad.tipoactividad.name),
-                                                 str(actividad.tipoetapa.name))
+    linea = "{0},{1},{2},{3},{4}".format(str(actividad.id),str(actividad.descripcion),str(actividad.fecha_vencimiento),
+                                                 str(actividad.fecha_planificacion),str(actividad.tipoactividad.name))
     f = open("Datos/Actividades.txt", "a+") # <- a significa que es para añadir (append) líneas al final, no sobreescribe
     f.write("\n" + linea)
     f.close()
@@ -167,6 +192,53 @@ def guardar_informe(informe):
     f = open("Datos/Informes.txt", "a+")  # <- a significa que es para añadir (append) líneas al final, no sobreescribe
     f.write("\n" + linea)
     f.close()
+
+def linea_oportunidad(oportunidad):
+    id = str(oportunidad.id)
+    nombre = str(oportunidad.nombre)
+    dinero_estimado = str(oportunidad.dinero_estimado)
+    tipoetapa = str(oportunidad.tipoetapa.name)
+
+    informes = ""
+    if len(oportunidad.informes) > 0:
+        for informe in oportunidad.informes:
+            informes += "," + str(informe.getId())
+        informes = informes[(informes.find(",") + 1):]
+    informes = "(" + informes + ")"
+
+    linea = id + "," + nombre + "," + informes + "," + dinero_estimado + "," + tipoetapa
+    return linea
+
+def guardar_oportunidad(oportunidad):
+    linea = linea_oportunidad(oportunidad)
+    f = open("Datos/Oportunidades.txt", "a+")
+    f.write("\n" + linea)
+    f.close()
+
+def modificar_oportunidad(oportunidad):
+    linea_a_modificar = linea_oportunidad(oportunidad)
+    posicion = 0
+
+    with open('Datos/Oportunidades.txt') as f:
+        x = 0
+        lista_lineas = [line.rstrip('\n') for line in f]
+        for linea in lista_lineas:
+            datos = linea.split(",")
+            if datos[0] == oportunidad.id:
+                posicion = x
+            x += 1
+    # f.close()
+
+    with open('Datos/Oportunidades.txt', 'w+') as f:
+        x = 0
+        for linea in lista_lineas:
+            if x == posicion:
+                linea = linea_a_modificar
+            if x == 0:
+                f.write(str(linea))
+            else:
+                f.write("\n" + str(linea))
+            x += 1
 
 def modificar_informe(informe):
     linea_a_modificar = linea_informe(informe)
@@ -249,9 +321,8 @@ def modificar_empleado(empleado):
             x += 1
 
 def modificar_actividad(actividad):
-    linea_a_modificar = "{0},{1},{2},{3},{4},{5}".format(str(actividad.id),str(actividad.descripcion),str(actividad.fecha_vencimiento),
-                                                 str(actividad.fecha_planificacion),str(actividad.tipoactividad.name),
-                                                 str(actividad.tipoetapa.name))
+    linea_a_modificar = "{0},{1},{2},{3},{4}".format(str(actividad.id),str(actividad.descripcion),str(actividad.fecha_vencimiento),
+                                                 str(actividad.fecha_planificacion),str(actividad.tipoactividad.name))
     posicion = 0
 
     with open('Datos/Actividades.txt') as f:
@@ -275,6 +346,31 @@ def modificar_actividad(actividad):
                 f.write("\n" + str(linea))
             x += 1
 
+def borrar_oportunidad(oportunidad):
+    with open('Datos/Oportunidades.txt') as f:
+        lista_lineas = [line.rstrip('\n') for line in f]
+        for linea in lista_lineas:
+            datos = linea.split(",")
+            if datos[0] == oportunidad.id:
+                lista_lineas.remove(linea)
+    # f.close()
+
+    with open('Datos/Oportunidades.txt', 'w+') as f:
+        x = 0
+        for linea in lista_lineas:
+            if x == 0:
+                f.write(str(linea))
+            else:
+                f.write("\n" + str(linea))
+            x += 1
+
+def borrar_informe_de_oportunidad(informe):
+    oportunidades = cargar_datos_oportunidades()
+    for oportunidad in oportunidades:
+        informes = oportunidad.informes
+        if informe in informes:
+            oportunidad.informes.remove(informe)
+            modificar_oportunidad(oportunidad)
 
 def borrar_informe(informe):
     with open('Datos/Informes.txt') as f:
@@ -464,4 +560,9 @@ def generar_id_informe():
         if comprobar_id_informe(id, informes):
             return id
 
-
+def generar_id_oportunidad():
+    oportunidades = cargar_datos_oportunidades()
+    while True:
+        id = generar_id()
+        if comprobar_id(id, oportunidades):
+            return id

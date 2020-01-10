@@ -16,7 +16,7 @@ Fecha planificacion
 Fecha vencimiento
 TipoActividad (reunión, llamada, promoción, informe)
 TipoEtapa
-
+tipoetapa esta en: constructor, guardar datos, cargar datos, crear nueva actividad, modificar actividad, fichero
 -- 
 
 
@@ -25,6 +25,14 @@ ID
 Actividad
 Clientes -> Lista (clientes que participan)
 Empleados -> Lista (empleados que administran)
+
+-- Oportunidades
+todos los informes de una actividad
+para arreglarlo, 
+- le pondría el dinero_estimado a la oportunidad
+- le asignaría una importancia (1 estrella, 2 estrellas, 3 estrellas)
+- juntaría diferentes informes en la oportunidad
+
 
 En base a estos atributos, de algún modo, habrá que cuantificar las cosas y mostrar gráficos.
 

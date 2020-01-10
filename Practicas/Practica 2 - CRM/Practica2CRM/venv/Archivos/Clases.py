@@ -1,7 +1,10 @@
 from enum import Enum
-import Funciones as Fun
 import colorama
 import datetime
+import dateutil.relativedelta as dr
+
+#from Archivos import Funciones as Fun
+import Funciones as Fun
 
 def colores():
     diccionario_colores = {
@@ -15,9 +18,9 @@ def colores():
     }
     return diccionario_colores
 
-# ----------------------------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
 # -------------------------------------------------- Enumeraciones --------------------------------------------------- #
-# ----------------------------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
 class TipoCliente(Enum):
     Cliente = 1  # <- por defecto
     Sponsor = 2
@@ -43,9 +46,9 @@ class Departamento(Enum):
     RRHH = 4
     Salud = 5
 
-# ----------------------------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
 # ----------------------------------------------------- Clases ------------------------------------------------------- #
-# ----------------------------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
 class Persona():
     # Una clase padre. Contiene los datos de una persona. Sirve para clientes y empleados.
     # No puedo crear múltiples constructores como hacía en Java, así que voy a crear solo uno,
@@ -150,17 +153,12 @@ class Empleado(Persona):
 #----------------------------------------------------------------------------------------------------------------------#
 class Actividad():
 
-    def __init__(self, descripcion=None, fecha_vencimiento=None, fecha_planificacion=None, tipoactividad=None, tipoetapa=None,
+    def __init__(self, descripcion=None, fecha_vencimiento=None, fecha_planificacion=None, tipoactividad=None,
                  id=None):
         if id is None:
             self.id = Fun.generar_id_actividad()
         else:
             self.id = id
-
-        if tipoetapa is None:
-            self.tipoetapa = TipoEtapa.Nueva
-        else:
-            self.tipoetapa = tipoetapa
 
         if tipoactividad is None:
             self.tipoactividad = TipoActividad.Reunion
@@ -178,7 +176,10 @@ class Actividad():
             self.fecha_planificacion = fecha_planificacion
 
         if fecha_vencimiento is None:
-            self.fecha_vencimiento = datetime.date.today()
+            fecha = datetime.date.today()
+            fecha = fecha + dr.relativedelta(days=7)
+            self.fecha_vencimiento = fecha
+
         else:
             self.fecha_vencimiento = fecha_vencimiento
 
@@ -276,6 +277,61 @@ class Informe():
             return True
         else:
             return False
+
+#----------------------------------------------------------------------------------------------------------------------#
+class Oportunidad():
+
+    def __init__(self, nombre=None, informes=None, dinero_estimado=None, tipoetapa=None, id=None):
+        if nombre is None:
+            self.nombre = "Sin nombre"
+        else:
+            self.nombre = nombre
+        if informes is None:
+            self.informes = []
+        else:
+            self.informes = informes
+        if dinero_estimado is None:
+            self.dinero_estimado = 100
+        else:
+            self.dinero_estimado = dinero_estimado
+        if tipoetapa is None:
+            self.tipoetapa = TipoEtapa.Nueva
+        else:
+            self.tipoetapa = tipoetapa
+        if id is None:
+            self.id = Fun.generar_id_oportunidad()
+        else:
+            self.id = id
+
+    def __str__(self):
+        return "{0} ({1}) - Etapa: {2}. Dinero estimado: {3}€".format(str(self.nombre), str(self.id), str(self.tipoetapa.name), str(self.dinero_estimado))
+
+    def addInforme(self, informe):
+        self.informes.append(informe)
+    def deleteInforme(self, informe):
+        if informe in self.informes:
+            self.informes.remove(informe)
+
+    def mostrar_oportunidad(self):
+        c = colores()
+        print(c["ly"] + "Oportunidad: " + c["rst"] + str(self.nombre) + "(" + str(self.id) + ")")
+        if len(self.informes) > 1:
+            x = 0
+            print(c["ly"] + "- Lista de informes: " + c["rst"], end="")
+            for informe in self.informes:
+                if x == 0:
+                    print(str(informe.getId()), end="")
+                else:
+                    print(", " + str(informe.getId()), end="")
+                x += 1
+        elif len(self.informes) > 0:
+            print(c["ly"] + "- Informe: " + c["rst"] + str(self.informes[0].getId()), end="")
+        else:
+            print(c["lr"] + "Actualmente no hay informes asociados a la actividad." + c["rst"], end="")
+        print()
+        print(c["ly"] + "- Dinero estimado: " + c["rst"] + str(self.dinero_estimado))
+        print(c["ly"] + "- Etapa: " + c["rst"]  + str(self.tipoetapa.name))
+
 
 #----------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------- No llegó a funcionar ------------------------------------------------ #

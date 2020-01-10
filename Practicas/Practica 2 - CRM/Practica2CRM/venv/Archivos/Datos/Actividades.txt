@@ -1,4 +1,15 @@
-act1,Primera actividad,2019-12-29,2019-12-21,Llamada,Propuesta
-act2,Segunda actividad,2020-01-14,2019-12-21,Reunion,Nueva
-act3,Tercera actividad,2019-12-29,2019-12-21,Llamada,Propuesta
-act4,No tiene descripciï¿½n.,2019-12-22,2019-12-22,Reunion,Nueva
+act1,Primera actividad,2019-12-29,2019-12-21,Llamada
+act2,Segunda actividad,2020-01-14,2019-12-21,Reunion
+act3,Tercera actividad,2019-12-29,2019-12-21,Llamada
+act4,No tiene descripciï¿½n.,2019-12-22,2019-12-22,Reunion
+07QUS,Asegurar que el progreso del proyecto es el adecuado,2019-12-20,2019-11-20,Reunion
+3Y0dp,Buscar un enfoque nuevo para el proyecto,2020-01-10,2019-12-10,Promocion
+yZcA8,Afianzar el trato con el cliente,2019-08-10,2019-07-10,Informe
+1Xxsn,Asegurar que el progreso del proyecto es el adecuado,2019-09-10,2019-08-10,Informe
+5X5ym,Buscar un enfoque nuevo para el proyecto,2019-09-10,2019-08-10,Informe
+eo87u,Seguimiento del proyecto,2020-01-30,2019-12-30,Informe
+3k5vC,Seguimiento del proyecto,2019-11-20,2019-10-20,Promocion
+XSD3n,Seguimiento del proyecto,2020-02-10,2020-01-10,Reunion
+H0I9V,Reunirse con el cliente para tratar determinados problemas,2019-10-30,2019-09-30,Promocion
+h0CX8,Mostrar u ofrecer una versión beta,2019-11-10,2019-10-10,Informe
+Yhmjk,uuuuuuu,2020-01-01,2019-12-25,Informe

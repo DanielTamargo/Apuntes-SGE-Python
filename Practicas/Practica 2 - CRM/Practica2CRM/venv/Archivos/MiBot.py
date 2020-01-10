@@ -116,7 +116,7 @@ def conversacion():
             else:
                 tts("Mi nombre es: " + str(nombre))
         # Rellenar con alternativas y opciones
-        if ("dime" and "japones") in frase:
+        if (("dime" and "japones") or ("sabes" and "japones")) in frase:
             tts_japones("Kanben shite kure! Yamero! Shinpai suru na! Nani yatte n no yo?! Ittekimasu! Irasshaimase!")
 
 
