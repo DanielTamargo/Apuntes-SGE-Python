@@ -106,19 +106,18 @@ def crearVentana():
         print(contrasenya)
         print("hola")
 
-        f = open("user_logged_in.txt", "w")
-
-        # ¿buscar el id de empleado relacionado y guardar el id encriptado en el archivo y desencriptar a la hora de recoger los datos cuando lo necesitemos?
-
-
-        f.write("{0},{1},{2}".format(nombre, contrasenya, marcado.get()))
-
-        f.close()
-
         # Cargar lista de usuarios y contraseñas y cotejar datos
         if nombre == "dani" and contrasenya == "dani":
+            # Datos login (si la casilla está marcada, se ejecutará el login automáticamente la próxima vez)
+            f = open("Datos/user_logged_in.txt", "w")
+            f.write("{0},{1},{2}".format(nombre, contrasenya, marcado.get()))
+            f.close()
+
+            # El registro del log se ejecuta cuando empieza a cargar el menú, así que no lo haré aquí
+
             datos = (nombre, contrasenya)
             root.destroy()
+            return True
 
         # Falta por añadir comprobar que sean válidos y luego arreglar el poder devolverlos
         # Propongo usar una función de funciones para cargar el fichero usuarios y contraseñas y contrastar datos

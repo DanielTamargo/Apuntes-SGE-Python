@@ -137,6 +137,7 @@ class Empleado(Persona):
             self.id = Fun.generar_id_empleado()
         else:
             self.id = id
+        #...
         if departamento is None:
             self.departamento = Departamento.Comercial
         else:

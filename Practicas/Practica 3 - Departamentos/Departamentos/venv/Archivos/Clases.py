@@ -150,6 +150,16 @@ class Empleado(Persona):
                                              str(self.departamento.name))
 
 #----------------------------------------------------------------------------------------------------------------------#
+class Usuario():
+    def __init__(self, usuario=None, contrasenya=None, empleado=None):
+        self.usuario = usuario
+        self.contrasenya = contrasenya
+        self.empleado = empleado
+
+    def __str__(self):
+        return "Usuario: {0}\nContraseña: {1}\nEmpleado: {2}".format(str(self.usuario), str(self.contrasenya), str(self.empleado))
+
+#----------------------------------------------------------------------------------------------------------------------#
 class Actividad():
 
     def __init__(self, descripcion=None, fecha_vencimiento=None, fecha_planificacion=None, tipoactividad=None,
