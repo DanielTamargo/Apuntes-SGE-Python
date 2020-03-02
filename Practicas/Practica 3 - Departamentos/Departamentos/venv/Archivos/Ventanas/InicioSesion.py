@@ -1,4 +1,6 @@
 import sys
+from Archivos.Funciones import Logs
+from Archivos.Funciones import CargarDatos as cd
 
 try:
     import Tkinter as tk
@@ -98,30 +100,16 @@ def crearVentana():
     #cb_mantener_sesion_iniciada.configure(variable=InicioSesion_support.che44)
 
     def iniciarSesion():
-        nombre = entry_usuario.get()
+        usuario = entry_usuario.get()
         contrasenya = entry_contrasenya.get()
-        #marcado = cb_mantener_sesion_iniciada.getboolean()
-        print(marcado.get()) #0 = false, 1 = true
-        print(nombre)
-        print(contrasenya)
-        print("hola")
-
-        # Cargar lista de usuarios y contraseñas y cotejar datos
-        if nombre == "dani" and contrasenya == "dani":
-            # Datos login (si la casilla está marcada, se ejecutará el login automáticamente la próxima vez)
-            f = open("Datos/user_logged_in.txt", "w")
-            f.write("{0},{1},{2}".format(nombre, contrasenya, marcado.get()))
-            f.close()
-
-            # El registro del log se ejecuta cuando empieza a cargar el menú, así que no lo haré aquí
-
-            datos = (nombre, contrasenya)
-            root.destroy()
-            return True
-
-        # Falta por añadir comprobar que sean válidos y luego arreglar el poder devolverlos
-        # Propongo usar una función de funciones para cargar el fichero usuarios y contraseñas y contrastar datos
-        # También propongo que si los datos son correctos se use un fichero temporal para pasar los datos a otro lado
+        mantener_sesion = marcado.get()
+        usuarios = cd.cargar_usuarios()
+        if usuario in usuarios:
+            if contrasenya == usuarios[usuario][1]:
+                Logs.usuarioLoggeado(usuario, contrasenya, mantener_sesion)
+                root.destroy()
+        else:
+            print("Error. Usuario y/o contraseña incorrectos.")
 
 
     button_Iniciar_Sesion = tk.Button(Frame1)
@@ -141,5 +129,9 @@ def crearVentana():
 
     root.mainloop()
 
+    f = open("Datos/user_logged_in.txt", "r+")
+    if len(f.read()) < 2:
+        return False
+    return True
 #crearVentana()
 

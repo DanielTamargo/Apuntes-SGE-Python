@@ -140,3 +140,13 @@ def cargar_datos_oportunidades():
             oportunidades.append(oportunidad)
 
     return oportunidades
+
+# Devuelve un diccionario con los usuarios, la clave será el usuario y el valor una lista de contrasenya + id empleado
+def cargar_usuarios():
+    usuarios = {}
+    with open("Datos/usuarios.txt", "r+") as f:
+        lineas = [line.rstrip('\n') for line in f]
+        for linea in lineas:
+            datos = linea.split(",")
+            usuarios[datos[0]] = [datos[1], datos[2]]
+    return usuarios

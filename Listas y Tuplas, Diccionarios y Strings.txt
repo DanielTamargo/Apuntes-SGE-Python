@@ -58,7 +58,7 @@ zip() -> recibe dos elementos iterables del mismo tamaño y devuelve un dicciona
 diccionario = dict(zip(["nombre", "apellido"], ["daniel", "tamargo"]))
 
 items() -> devuelve una lista de tuplas, cada tupla será la clave y el valor (si la clave tenía varios valores, el valor será una tupla de los valores)
-items = diccionario.items(9
+items = diccionario.items(9)
 
 keys() y values() -> devuelve una lista de claves o de valores
 claves = diccionario.keys()
@@ -106,7 +106,7 @@ center(30, "=") -> print(texto.center(30, "=")
 ljust(30, "=") -> igual que center() pero alineando a la izquierda
 rjust(30, "=") -> igual que center() pero alineando a la derecha
 
-zfill(longitud) -> devuelve una copia de la cadena con ceros a la izquierda hasta llegar a la logintud
+zfill(longitud) -> devuelve una copia de la cadena con ceros a la izquierda hasta llegar a la longitud
 count(texto)
 
 find("subcadena"[, posicion_inicial, posicion_final]) -> busca la subcadena, si la encuentra, devuelve el valor donde empieza esa cadena, si no la encuentra devuelve un -1
@@ -150,7 +150,7 @@ print(mi_cadena.split())
 
 split()
 mi_cadena2 = "Python es, divertido"
-print(mi_cadena.split(","))
+print(mi_cadena2.split(","))
 >>> ["Python es","divertido"]
 
 mi_cadena = "Python es divertido"
@@ -158,6 +158,18 @@ print(mi_cadena.partition('es’))
 >>> (‘Python’, ’es’, ‘divertido’)
 print(mi_cadena.partition(‘no’))
 >>> (‘Python es divertido’, ‘’, ‘’)
+
+
+Comprobaciones
+
+import re 
+regex = "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+def check(email):  
+    if(re.search(regex,email)):  
+        print("Valid Email")  
+    else:
+        print("Invalid Email")  
+
 
 ------------------------------------------------------------------------------------------------------------
 Colores:
