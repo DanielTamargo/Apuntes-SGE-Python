@@ -1,3 +1,93 @@
+import csv
+from tempfile import NamedTemporaryFile
+import shutil
+
+#-----------------------------------------------------------------------------------------------------------------------
+# LISTA DE RUTAS DE ARCHIVOS (así solo hay que cambiarlos aquí y no en cada lugar que se usen)
+file_proveedores = "Datos/proveedores.csv"
+# W.I.P
+# W.I.P
+# ...
+
+#-----------------------------------------------------------------------------------------------------------------------
+def guardar_proveedor(proveedor):
+    campos = ["id", "nif", "nombre", "num_ventas"]
+    with open("Datos/proveedores.csv", "a+", newline="") as csv_f:
+        writer = csv.DictWriter(csv_f, fieldnames=campos)
+        writer.writeheader()
+        writer.writerow({
+            "id":str(proveedor.id),
+            "nif":str(proveedor.nif),
+            "nombre":str(proveedor.nombre),
+            "num_ventas":str(proveedor.num_ventas)})
+#-----------------------------------------------------------------------------------------------------------------------
+def modificar_proveedor(proveedor):
+    campos = ["nif", "nombre", "num_ventas", "id"]
+    temp_file = NamedTemporaryFile(delete=False)
+    with open("Datos/proveedores.csv", "rb") as csv_f, temp_file:
+        reader = csv.DictReader(csv_f)
+        writer = csv.DictWriter(temp_file, fieldnames=campos)
+        writer.writeheader()
+        for row in reader:
+            if row["id"] == proveedor.id:
+                row["nif"] = proveedor.nif
+                row["nombre"] = proveedor.nombre
+                row["num_ventas"] = proveedor.num_ventas
+            writer.writerow({
+                "id": row["id"],
+                "nif": row["nif"],
+                "nombre": row["nombre"],
+                "num_ventas": row["num_ventas"]
+            })
+    shutil.move(temp_file.name, "Datos/proveedores.csv")
+#-----------------------------------------------------------------------------------------------------------------------
+def guardar_producto(producto):
+    linea = "{0},{1},{2},{3},{4},{5}".format(str(producto.id), str(producto.nombre), str(producto.descripcion),
+                                         str(producto.precio), str(producto.estatus_producto.name), str(producto.proveedor.id))
+    f = open("Datos/productos.txt", "a+") # <- a significa que es para añadir (append) líneas al final, no sobreescribe
+    f.write("\n" + linea)
+    f.close()
+#-----------------------------------------------------------------------------------------------------------------------
+def modificar_producto(producto):
+    linea = "{0},{1},{2},{3},{4},{5}".format(str(producto.id), str(producto.nombre), str(producto.descripcion),
+                                         str(producto.precio), str(producto.estatus_producto.name), str(producto.proveedor.id))
+    posicion = 0
+
+    with open('Datos/productos.txt') as f:
+        x = 0
+        posicion = -1
+        lista_lineas = [line.rstrip('\n') for line in f]
+        for linea in lista_lineas:
+            datos = linea.split(",")
+            if datos[0] == producto.id:
+                posicion = x
+            x += 1
+    # f.close()
+
+    with open('Datos/productos.txt', 'w+') as f:
+        x = 0
+        for linea in lista_lineas:
+            if x == posicion:
+                linea = linea_a_modificar
+            if x == 0:
+                f.write(str(linea))
+            else:
+                f.write("\n" + str(linea))
+            x += 1
+#-----------------------------------------------------------------------------------------------------------------------
+def guardar_venta(venta):
+    productos = ""
+    if len(venta.productos) > 0:
+        for producto in venta.productos:
+            productos += "," + str(producto.id)
+        productos = productos[(productos.find(",") + 1):]
+    productos = "(" + productos + ")"
+    
+    linea = str(venta.id) + "," + str(venta.cliente.id) + "," + str(venta.empleado.id) + "," + str(venta.precio_total) +  "," + str(productos)
+    f = open("Datos/ventas.txt", "a+")
+    f.write("\n" + linea)
+    f.close()
+#-----------------------------------------------------------------------------------------------------------------------
 def guardar_cliente(cliente):
     linea = "{0},{1},{2},{3},{4},{5},{6}".format(str(cliente.id),str(cliente.dni),str(cliente.nombre),
                                                  str(cliente.apellidos),str(cliente.email),

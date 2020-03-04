@@ -1,3 +1,5 @@
+import Archivos.Funciones.CargarDatos as cd
+
 ########################################################################################################################
 # Genera y devuelve un id (string) de 5 caracteres aleatorios
 
@@ -38,43 +40,64 @@ def comprobar_id_informe(id, lista):
 ########################################################################################################################
 # Utilizan la función generar_id y comprueba el id generado para ver que no existe, si no existe, lo asigna
 # Para saber si el id existe o no, utiliza la función comprobar_id
+def generar_id_producto():
+    productos = cd.cargar_datos_productos()
+    while True:
+        id = generar_id()
+        if comprobar_id(id, productos):
+            return id
+
+def generar_id_venta():
+    ventas = cd.cargar_datos_ventas()
+    while True:
+        id = generar_id()
+        if comprobar_id(id, ventas):
+            return id
+
+def generar_id_proveedor():
+    proveedores = cd.cargar_datos_proveedores()
+    while True:
+        id = generar_id()
+        if comprobar_id(id, proveedores):
+            return id
+
 def generar_id_cliente():
-    clientes = cargar_datos_clientes()
+    clientes = cd.cargar_datos_clientes()
     while True:
         id = generar_id()
         if comprobar_id(id, clientes):
             return id
 
 def generar_id_empleado():
-    empleados = cargar_datos_empleados()
+    empleados = cd.cargar_datos_empleados()
     while True:
         id = generar_id()
         if comprobar_id(id, empleados):
             return id
 
 def generar_id_actividad():
-    actividades = cargar_datos_actividades()
+    actividades = cd.cargar_datos_actividades()
     while True:
         id = generar_id()
         if comprobar_id(id, actividades):
             return id
 
 def generar_id_informe():
-    informes = cargar_datos_informes()
+    informes = cd.cargar_datos_informes()
     while True:
         id = generar_id()
         if comprobar_id_informe(id, informes):
             return id
 
 def generar_id_oportunidad():
-    oportunidades = cargar_datos_oportunidades()
+    oportunidades = cd.cargar_datos_oportunidades()
     while True:
         id = generar_id()
         if comprobar_id(id, oportunidades):
             return id
 
 def generar_id_registroLesion():
-    registroLesiones = cargar_datos_registroLesion()
+    registroLesiones = cd.cargar_datos_registroLesion()
     while True:
         id = generar_id()
         if comprobar_id(id, registroLesiones):

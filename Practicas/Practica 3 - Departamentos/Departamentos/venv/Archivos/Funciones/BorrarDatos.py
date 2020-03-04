@@ -1,13 +1,20 @@
 from Archivos.Funciones import CargarDatos as cd
 
+def borrar_venta(venta):
+    with open('Datos/ventas.txt', 'w+') as f:
+        lista_lineas = [line.rstrip('\n') for line in f]
+        for linea in lista_lineas:
+            datos = linea.split(",")
+            if datos[0] == venta.id:
+                lista_lineas.remove(linea)
+
 def borrar_oportunidad(oportunidad):
-    with open('Datos/Oportunidades.txt') as f:
+    with open('Datos/Oportunidades.txt', 'w+') as f:
         lista_lineas = [line.rstrip('\n') for line in f]
         for linea in lista_lineas:
             datos = linea.split(",")
             if datos[0] == oportunidad.id:
                 lista_lineas.remove(linea)
-    # f.close()
 
     with open('Datos/Oportunidades.txt', 'w+') as f:
         x = 0

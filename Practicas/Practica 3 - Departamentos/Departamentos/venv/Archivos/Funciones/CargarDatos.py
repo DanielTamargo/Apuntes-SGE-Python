@@ -1,9 +1,31 @@
 from Archivos import Clases
+import csv
 
 # Carga la lista de clientes del fichero (o los datos base creados para pruebas)
+def cargar_datos_productos():
+    productos = []
+    with open('Datos/productos.txt', 'r+') as f:
+        lineas = [line.rstrip('\n') for line in f]
+        for linea in lineas:
+            datos = linea.split(",")
+            producto = Clases.Producto(datos[1], datos[2], datos[3], datos[4], datos[0])
+            productos.append(producto)
+
+    return productos
+
+def cargar_datos_proveedores():
+    proveedores = []
+    with open('Datos/proveedores.csv', 'r+') as csv_f:
+        reader = csv.DictReader(csv_f)
+        for fila in reader:
+            proveedor = Clases.Proveedor(fila["nif"], fila["nombre"], fila["num_ventas"], fila["id"])
+            proveedores.append(proveedor)
+
+    return proveedores
+
 def cargar_datos_clientes():
     clientes = []
-    with open('Datos/Clientes.txt') as f:
+    with open('Datos/Clientes.txt', 'r+') as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             datos = linea.split(",")
@@ -19,10 +41,9 @@ def cargar_datos_clientes():
 
     return clientes
 
-
 def cargar_datos_empleados():
     empleados = []
-    with open('Datos/Empleados.txt') as f:
+    with open('Datos/Empleados.txt', 'r+') as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             datos = linea.split(",")
@@ -42,10 +63,16 @@ def cargar_datos_empleados():
 
     return empleados
 
+def cargar_empleado_con_id(id_empleado):
+    empleados = cargar_datos_empleados()
+    for empleado in empleados:
+        if empleado.id == id_empleado:
+            return empleado
+    return None
 
 def cargar_datos_actividades():
     actividades = []
-    with open('Datos/Actividades.txt') as f:
+    with open('Datos/Actividades.txt', 'r+') as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             datos = linea.split(",")
@@ -63,14 +90,13 @@ def cargar_datos_actividades():
 
     return actividades
 
-
 def cargar_datos_informes():
     clientes = cargar_datos_clientes()
     empleados = cargar_datos_empleados()
     actividades = cargar_datos_actividades()
 
     informes = []
-    with open('Datos/Informes.txt') as f:
+    with open('Datos/Informes.txt', 'r+') as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             id_informe = linea[0:linea.find(",")]
@@ -104,12 +130,11 @@ def cargar_datos_informes():
 
     return informes
 
-
 def cargar_datos_oportunidades():
     informes = cargar_datos_informes()
 
     oportunidades = []
-    with open('Datos/Oportunidades.txt') as f:
+    with open('Datos/Oportunidades.txt', 'r+') as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             id_oportunidad = linea[0:linea.find(",")]
@@ -141,12 +166,11 @@ def cargar_datos_oportunidades():
 
     return oportunidades
 
-# Devuelve un diccionario con los usuarios, la clave será el usuario y el valor una lista de contrasenya + id empleado
-def cargar_usuarios():
-    usuarios = {}
+def cargar_datos_usuarios():
+    usuarios = []
     with open("Datos/usuarios.txt", "r+") as f:
         lineas = [line.rstrip('\n') for line in f]
         for linea in lineas:
             datos = linea.split(",")
-            usuarios[datos[0]] = [datos[1], datos[2]]
+            usuario = Clases.Usuario(datos[0], datos[1], datos[2])
     return usuarios

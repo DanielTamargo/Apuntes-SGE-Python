@@ -3,7 +3,8 @@ import colorama
 import datetime
 import dateutil.relativedelta as dr
 #from Archivos import Funciones as Fun
-import Archivos.Funciones as Fun
+import Archivos.Funciones.GenerarID as Fun
+import Archivos.Funciones.CargarDatos as cd
 
 def colores():
     diccionario_colores = {
@@ -44,6 +45,11 @@ class Departamento(Enum):
     Ventas = 3 # Crear/Editar/Descatalogar productos <- CSV
     RRHH = 4 # Registrar/Eliminar empleados <- FICHERO
     Salud = 5 # Registrar lesiones y actualizar lesiones a lesiones ya curadas <- opcional W.I.P
+
+class EstatusProducto(Enum):
+    Activo = 1 # <- por defecto, en venta
+    Descatalogado = 2 # <- no se pueden vender productos descatalogados
+
 
 #----------------------------------------------------------------------------------------------------------------------#
 # ----------------------------------------------------- Clases ------------------------------------------------------- #
@@ -95,7 +101,65 @@ class Persona():
                 return hoy.year - fecha_nac.year
         else:
             return -1 # <- Tratar el -1 como un error
+#----------------------------------------------------------------------------------------------------------------------#
+class Proveedor():
+    def __init__(self, nif=None, nombre=None, num_ventas=None, id=None):
+        if nif is None:
+            self.nif = ""
+        else:
+            self.nif = nif
+        if id is None:
+            self.id = Fun.generar_id_proveedor()
+        else:
+            self.id = id
+        if nombre is None:
+            self.nombre = "Error al guardar el nombre"
+        else:
+            self.nombre = nombre
+        if num_ventas is None:
+            self.num_ventas = 0
+        else:
+            self.num_ventas = num_ventas
 
+    def __str__(self):
+        return "{0} ({1}). Número de ventas: {2}".format(str(self.nombre), str(self.nif), str(self.num_ventas))
+#----------------------------------------------------------------------------------------------------------------------#
+class Producto():
+    def __init__(self, nombre=None, descripcion=None, precio=None, proveedor=None, estatus_producto=None, id=None):
+        if id is None:
+            self.id = Fun.generar_id_producto()
+        else:
+            self.id = id
+        if nombre is None:
+            self.nombre = "Producto sin nombre"
+        else:
+            self.nombre = nombre
+        if descripcion is None:
+            self.descripcion = ""
+        else:
+            self.descripcion = descripcion
+        if precio is None:
+            self.precio = 0.0
+        else:
+            self.precio = precio
+        if estatus_producto is None:
+            self.estatus_producto = EstatusProducto.Activo
+        else:
+            self.estatus_producto = estatus_producto
+        if proveedor is None:
+            self.proveedor = null
+        else:
+            if type(proveedor) is str:
+                proveedores = cd.cargar_datos_proveedores()
+                for prov in proveedores:
+                    if prov.id == proveedor:
+                        self.proveedor = prov
+            else:
+                self.proveedor = proveedor
+
+    def __str__(self):
+        return "{0}. {1} - {2} ({3}) | {4}".format(str(self.id), str(self.nombre), str(self.precio),
+                                                   str(self.estatus_producto.name), str(self.proveedor.nombre))
 #----------------------------------------------------------------------------------------------------------------------#
 class Cliente(Persona):
     # Participan en actividades.
@@ -125,7 +189,6 @@ class Cliente(Persona):
                  + c["lc"] + "Fecha: " + c["rst"] + "{4}\n" + c["lc"] + "Tipo: " + c["rst"] + "{5}"
         print(cadena.format(str(self.id), str(self.dni), str(self.nombre), str(self.apellidos),
                             str(self.fecha_nacimiento), str(self.tipocliente.name)))
-
 #----------------------------------------------------------------------------------------------------------------------#
 class Empleado(Persona):
     # Organizan/administran actividades.
@@ -148,7 +211,6 @@ class Empleado(Persona):
     def __str__(self):
         return "{0} - {1}, {2}. {3}.".format(str(self.id), str(self.apellidos), str(self.nombre),
                                              str(self.departamento.name))
-
 #----------------------------------------------------------------------------------------------------------------------#
 class Usuario():
     def __init__(self, usuario=None, contrasenya=None, empleado=None):
@@ -158,10 +220,8 @@ class Usuario():
 
     def __str__(self):
         return "Usuario: {0}\nContraseña: {1}\nEmpleado: {2}".format(str(self.usuario), str(self.contrasenya), str(self.empleado))
-
 #----------------------------------------------------------------------------------------------------------------------#
 class Actividad():
-
     def __init__(self, descripcion=None, fecha_vencimiento=None, fecha_planificacion=None, tipoactividad=None,
                  id=None):
         if id is None:
@@ -195,7 +255,6 @@ class Actividad():
     def __str__(self):
         return "{0} - {1}, {2}. {3}".format(str(self.id), str(self.tipoactividad.name), str(self.fecha_vencimiento),
                                             str(self.descripcion))
-
 #----------------------------------------------------------------------------------------------------------------------#
 class Informe():
     # El informe relaciona la actividad con una lista de clientes (participan) y empleados (administran)
@@ -286,10 +345,8 @@ class Informe():
             return True
         else:
             return False
-
 #----------------------------------------------------------------------------------------------------------------------#
 class Oportunidad():
-
     def __init__(self, nombre=None, informes=None, dinero_estimado=None, tipoetapa=None, id=None):
         if nombre is None:
             self.nombre = "Sin nombre"
@@ -340,10 +397,8 @@ class Oportunidad():
         print()
         print(c["ly"] + "- Dinero estimado: " + c["rst"] + str(self.dinero_estimado))
         print(c["ly"] + "- Etapa: " + c["rst"]  + str(self.tipoetapa.name))
-
 #----------------------------------------------------------------------------------------------------------------------#
 class RegistroLesion():
-    
     def __init__(self, descripcion=None, nivel_importancia=None, id=None):
         if descripcion is None:
             self.descripcion = "Sin descripción"
@@ -357,3 +412,39 @@ class RegistroLesion():
             self.id = Fun.generar_id_registroLesion()
         else:
             self.id = id
+#----------------------------------------------------------------------------------------------------------------------#
+class Venta():
+    def __init__(self, productos, cliente, empleado):
+        self.id = Fun.generar_id_venta()
+        self.productos = productos
+        self.cliente = cliente
+        self.empleado = empleado
+        self.precio_total = self.calcularPrecio()
+
+    # Calcula el precio total de la venta en el momento que se realizó (por si los precios cambian)
+    # (me he planteado guardar el precio del momento de cada producto pero sería demasiado complejo)
+    def calcularPrecio(self):
+        precio_total = 0.0
+        for producto in self.productos:
+            precio_total += producto.precio
+        return precio_total
+
+    def __str__(self):
+        return "Precio total: {0}. Cliente: {1}. Vendedor: {2}".format(str(self.precio_total), str(self.cliente.nombre),
+                                                                       str(self.empleado.nombre))
+#----------------------------------------------------------------------------------------------------------------------#
+class Usuario():
+    def __init__(self, usuario, contrasenya, empleado):
+        self.usuario = usuario
+        self.contrasenya = contrasenya
+        if type(empleado) is str:
+            empleados = cd.cargar_datos_empleados()
+            for emple in empleados:
+                if emple.id == empleado:
+                    self.empleado = emple
+        else:
+            self.empleado = empleado
+
+    def __str__(self):
+        return "Usuario: {0}. Contraseña: {1}. Empleado asociado: {2}".format(str(self.usuario), str(self.contrasenya),
+                                                                              str(self.empleado.nombre))

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="309c597f-bd99-427e-9303-42efad568b4c" name="Default Changelist" comment="" />
+    <list default="true" id="309c597f-bd99-427e-9303-42efad568b4c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Datos/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Datos/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/BorrarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/BorrarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GenerarID.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GenerarID.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GuardarModificarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GuardarModificarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/Logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/Logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Ventanas/InicioSesion.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Ventanas/InicioSesion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

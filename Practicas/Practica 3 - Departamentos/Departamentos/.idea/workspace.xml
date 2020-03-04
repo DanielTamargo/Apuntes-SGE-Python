@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7833dd07-4266-466a-b0e5-217c609c76a3" name="Default Changelist" comment="" />
+    <list default="true" id="7833dd07-4266-466a-b0e5-217c609c76a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/venv/Archivos/Menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 2 - CRM/Practica2CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 2 - CRM/Practica2CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Clases.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Clases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Datos/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Datos/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Funciones/BorrarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Funciones/BorrarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Funciones/CargarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Funciones/CargarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Funciones/GenerarID.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Funciones/GenerarID.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Funciones/GuardarModificarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Funciones/GuardarModificarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Funciones/Logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Funciones/Logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/Ventanas/InicioSesion.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Ventanas/InicioSesion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Archivos/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/pruebas.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +46,7 @@
       <recent name="D:\Estudios\Proyectos Gitkraken\Apuntes-SGE-Python\Practicas\Practica 3 - Departamentos\Departamentos\venv\Archivos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python.pruebas">
     <configuration name="InicioSesion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Departamentos" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,8 +112,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main" />
         <item itemvalue="Python.pruebas" />
+        <item itemvalue="Python.Main" />
         <item itemvalue="Python.InicioSesion" />
       </list>
     </recent_temporary>
@@ -123,22 +136,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1097" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583157697083" />
-    <state width="1328" height="108" key="GridCell.Tab.0.bottom" timestamp="1583162451227">
+    <state width="1573" height="108" key="GridCell.Tab.0.bottom" timestamp="1583327269849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1328" height="108" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583162451227" />
-    <state width="1328" height="108" key="GridCell.Tab.0.center" timestamp="1583162451227">
+    <state width="1573" height="108" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583327269849" />
+    <state width="1573" height="108" key="GridCell.Tab.0.center" timestamp="1583327269849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1328" height="108" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583162451227" />
-    <state width="1328" height="108" key="GridCell.Tab.0.left" timestamp="1583162451227">
+    <state width="1573" height="108" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583327269849" />
+    <state width="1573" height="108" key="GridCell.Tab.0.left" timestamp="1583327269849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1328" height="108" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583162451227" />
-    <state width="1328" height="108" key="GridCell.Tab.0.right" timestamp="1583162451227">
+    <state width="1573" height="108" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583327269849" />
+    <state width="1573" height="108" key="GridCell.Tab.0.right" timestamp="1583327269849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1328" height="108" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583162451227" />
+    <state width="1573" height="108" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583327269849" />
     <state x="121" y="208" key="SettingsEditor" timestamp="1583157970929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -147,9 +160,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1580174420561" />
-    <state x="874" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1583147859029">
+    <state x="874" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1583289204955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="874" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583147859029" />
+    <state x="874" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583289204955" />
   </component>
 </project>

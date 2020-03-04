@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime
+import Archivos.Funciones.CargarDatos as cd
 
 # Función para crear los logs
 def generarLog(usuario):
@@ -26,11 +27,15 @@ def cargarUsuarioLoggeado():
     datos = f.read()
     if len(datos) > 2:
         datos = datos.split(",")
-        return str(datos[0])
+        usuarios = cd.cargar_datos_usuarios()
+        for usuario in usuarios:
+            if usuario.id == datos[0]:
+                return usuario
+        return None
+
 
 # Función que comprueba si existen datos de un usuario que marcase la casilla de Mantener Sesión Iniciada
 def comprobar_inicio_sesion_automatico():
-
     with open("Datos/user_logged_in.txt", "r+") as f:
         datos = f.read()
         if len(datos) > 2:

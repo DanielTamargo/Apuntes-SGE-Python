@@ -103,9 +103,9 @@ def crearVentana():
         usuario = entry_usuario.get()
         contrasenya = entry_contrasenya.get()
         mantener_sesion = marcado.get()
-        usuarios = cd.cargar_usuarios()
+        usuarios = cd.cargar_datos_usuarios()
         if usuario in usuarios:
-            if contrasenya == usuarios[usuario][1]:
+            if usuario.contrasenya == contrasenya:
                 Logs.usuarioLoggeado(usuario, contrasenya, mantener_sesion)
                 root.destroy()
         else:
