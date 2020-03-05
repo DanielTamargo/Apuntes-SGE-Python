@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/venv/Archivos/Menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/Menus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Archivos/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Archivos/pruebas.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +37,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv/Archivos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -47,7 +48,19 @@
       <recent name="D:\Estudios\Proyectos Gitkraken\Apuntes-SGE-Python\Practicas\Practica 3 - Departamentos\Departamentos\venv\Archivos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pruebas2">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.Main">
     <configuration name="InicioSesion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Departamentos" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,9 +147,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Main" />
         <item itemvalue="Python.pruebas2" />
         <item itemvalue="Python.pruebas" />
-        <item itemvalue="Python.Main" />
         <item itemvalue="Python.InicioSesion" />
       </list>
     </recent_temporary>
@@ -153,6 +166,17 @@
       <updated>1579959388547</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="1097" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583426184981">

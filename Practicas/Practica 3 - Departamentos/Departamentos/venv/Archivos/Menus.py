@@ -2,9 +2,10 @@ import colorama
 import Archivos.Funciones.CargarDatos as cd
 import Archivos.Clases as Clases
 import Archivos.Funciones.GuardarModificarDatos as gm
+import Archivos.Funciones.Logs as Logs
+import Archivos.Funciones.CrearPDF as pdf_t
 import smtplib
 import ssl
-
 
 
 def colores():
@@ -102,13 +103,9 @@ def enviar_email(linea, email):
 
     # Está así para que aparezca bien quien lo envía, cual es el asunto y el cuerpo del email
     mensaje = """\
-    From: The Best Password Generator\nSubject: Nuevo usuario creado\n\n   Este correo confirma que se han guardado los siguientes datos:
-    - Usuario: {0}
-    - Contrasenya: {1}
-    - Email: {2}
-    Se han guardado en nuestra base de datos, si quieres cambiar cualquier dato, contacta con nosotros.
+    From: Artic Gaming\nSubject: Factura de tu pedido\n\n   Vea el archivo PDF adjunto al correo.:
 
-    Este correo ha sido enviado por The Best Password Generator.""".format(usuario, contrasenya, email)
+    Muchas gracias por su compra. Esperamos volver a verle de nuevo."""
 
     context = ssl.create_default_context()
 
@@ -128,11 +125,11 @@ def preguntar_mandar_email(venta, email):
         respuesta = respuesta.lower()[0]
         if respuesta == "s" or respuesta == "n":
             if respuesta == "s":
-                # aquí hay que preparar la linea
+                # Creamos el PDF y enviamos el correo
+                pdf_t.crearPDF(venta)
                 enviar_email(usuario, contrasenya, email)
             else:
-                print(
-                    "Perfecto, entonces no mandaremos el email.")
+                print("Perfecto, entonces no mandaremos el email.")
         else:
             print(colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + "¡Error!"
                   + colorama.Style.RESET_ALL + " Debes introducir S o N para marcar Sí o No.")
@@ -141,10 +138,45 @@ def preguntar_mandar_email(venta, email):
               + colorama.Style.RESET_ALL + " No has introducido un nada :(")
 
 #----------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------- MENÚ Y OPCIONES PROVEEDORES -------------------------------------------- #
+#----------------------------------------------------------------------------------------------------------------------#
+def opcion_nuevo_proveedor():
+
+
+def menu_productos(boolean_logout):
+    c = colores()
+    while True:
+        print(c["lm"] + c["*"] + "Menú Proveedores" + c["rst"])
+        print("1. Registrar nuevo proveedor.")
+        print("2. Modificar proveedor (W.I.P.).")
+        if boolean_logout:
+            print("3. Cerrar sesión.")
+        else:
+            print("3. Salir del menú de ventas.")
+        eleccion = input("Opción: ")
+        try:
+            eleccion = int(eleccion)
+        except:
+            print("{0}Error.{1} Debes introducir el número de la opción.\n".format(c["lr"], c["rst"]))
+            eleccion = -12131415
+        if eleccion != -12131415:
+            if eleccion > 0 and eleccion < 4:
+                print("submenússss")
+
+
+
+
+            else:
+                print("{0}¡Ups!{1} No te he entendido :(\n".format(c["lr"], c["rst"]))
+        print()
+
+
+
+#----------------------------------------------------------------------------------------------------------------------#
 # -------------------------------------------- MENÚ Y OPCIONES PRODUCTOS --------------------------------------------- #
 #----------------------------------------------------------------------------------------------------------------------#
 
-def menu_productos(boolean_logout):
+def menu_productos(usuario_loggeado, boolean_logout):
     c = colores()
     while True:
         print(c["lm"] + c["*"] + "Menú Productos" + c["rst"])
@@ -176,7 +208,7 @@ def menu_productos(boolean_logout):
 #----------------------------------------------------------------------------------------------------------------------#
 # --------------------------------------------- MENÚ Y OPCIONES VENTAS  ---------------------------------------------- #
 #----------------------------------------------------------------------------------------------------------------------#
-def mostrar_lista_ventas(ventas):
+def mostrar_lista_ventas(usuario_loggeado, ventas):
     print("Lista de ventas:")
     indice = 1
     for venta in ventas:

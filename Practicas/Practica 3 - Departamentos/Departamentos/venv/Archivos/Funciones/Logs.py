@@ -2,6 +2,16 @@ import csv
 from datetime import datetime
 import Archivos.Funciones.CargarDatos as cd
 
+# Función para mantener un registro de cada proceso
+def generarRegistro(accion, usuario):
+    nom_usuario = usuario
+    if type(usuario) is not str:
+        nom_usuario = usuario.usuario
+
+    with open('Datos/action_logs.txt', 'a+') as f:
+        ahora = datetime.now()
+        f.write("{0},{1},{2}".format(str(accion), str(nom_usuario), str(ahora)))
+
 # Función para crear los logs
 def generarLog(usuario):
     print("Generando log")

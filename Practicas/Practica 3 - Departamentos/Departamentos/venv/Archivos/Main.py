@@ -21,9 +21,6 @@ if inicio is True:
     # Borramos los datos de user_logged_in si no marcó la casilla de mantener sesión iniciada
     Logs.borrarUsuarioLoggeado()
 
-
-
-
 else:
     print("Fin del programa")
 

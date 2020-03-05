@@ -30,9 +30,11 @@ logotipo = "logo-empresa-small.png"
 
 locale.setlocale(locale.LC_TIME, 'es_ES')
 ahora = datetime.today()
-ahora = ahora.strftime("%a, %d %b %Y %H:%M:%S")
+ahora = ahora.strftime("%A, %d de %B %Y %H:%M:%S")
 #formatoFecha = time.ctime()
-formatoFecha = str(ahora)
+formatoFecha = str(ahora).title()
+formatoFecha = formatoFecha.replace("De", "de")
+
 
 imagen = Image(logotipo, 1 * inch, 1 * inch)
 Story.append(imagen)
@@ -41,7 +43,6 @@ estilos.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
 texto = '%s' % formatoFecha
 Story.append(Paragraph(texto, estilos["Normal"]))
 Story.append(Spacer(1, 12))
-
 
 texto = 'Estimado/a cliente,'
 Story.append(Paragraph(texto, estilos["Normal"]))
@@ -69,32 +70,37 @@ ventas = cd.cargar_datos_ventas()
 venta = ventas[0] #### <- seleccionar una venta en concreto
 productos = venta.productos
 
+#data = [
+#    ['          Producto          ', '          Precio          ', '          Precio total          '],
+#    ['Producto', 'Precio', ''],
+#    ['Producto', 'Precio', ''],
+#    ['Producto', 'Precio', ''],
+#    ['', '', 'Precio total :)']
+#]
+
 data = [
-    ['Producto', 'Precio', 'Precio total'],
-    ['Producto', 'Precio', 'Precio total'],
-    ['Producto', 'Precio', 'Precio total'],
-    ['Producto', 'Precio', 'Precio total']
+    ['          Producto          ', '          Precio          ', '          Precio total          ']
 ]
 
-#for producto in productos:
-#    datos = []
-#    datos.append(str(producto.nombre))
-#    datos.append(str(producto.precio))
-#    datos.append("")
-#    data.append(datos)
-#data.append(["", "", str(venta.precio_total)])
+for producto in productos:
+    datos = []
+    datos.append(str(producto.nombre))
+    datos.append(str(producto.precio))
+    datos.append("")
+    data.append(datos)
+data.append(["", "", str(venta.precio_total)])
 
 table = Table(data)
 
 # 1) Preparamos el estilo
 
 style = TableStyle([
-    ('BACKGROUND', (0, 0), (3, 0), colors.orange),
-    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+    ('BACKGROUND', (0, 0), (3, 0), colors.lightskyblue),
+    ('TEXTCOLOR', (0, 0), (-1, 0), colors.darkblue),
 
-    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+    ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
 
-    ('FONTNAME', (0, 0), (-1, 0), 'Courier-Bold'),
+    ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
     ('FONTSIZE', (0, 0), (-1, 0), 14),
 
     ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
@@ -107,7 +113,7 @@ table.setStyle(style)
 rowNumb = len(data)
 for i in range(1, rowNumb):
     if i % 2 == 0:
-        bc = colors.burlywood
+        bc = colors.lightblue
     else:
         bc = colors.beige
 
@@ -140,3 +146,4 @@ Story.append(Paragraph(texto, estilos["Normal"]))
 Story.append(Spacer(1, 12))
 
 doc.build(Story)
+
