@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ccf18efd-3c7e-468b-8086-b7419e610873" name="Default Changelist" comment="" />
+    <list default="true" id="ccf18efd-3c7e-468b-8086-b7419e610873" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/logo-empresa.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 2 - CRM/Practica2CRM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 2 - CRM/Practica2CRM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

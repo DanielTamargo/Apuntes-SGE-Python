@@ -125,7 +125,7 @@ class Proveedor():
         return "{0} ({1}). Número de ventas: {2}".format(str(self.nombre), str(self.nif), str(self.num_ventas))
 #----------------------------------------------------------------------------------------------------------------------#
 class Producto():
-    def __init__(self, nombre=None, descripcion=None, precio=None, proveedor=None, estatus_producto=None, id=None):
+    def __init__(self, nombre=None, descripcion=None, precio=None, estatus_producto=None, proveedor=None, id=None):
         if id is None:
             self.id = Fun.generar_id_producto()
         else:
@@ -414,12 +414,19 @@ class RegistroLesion():
             self.id = id
 #----------------------------------------------------------------------------------------------------------------------#
 class Venta():
-    def __init__(self, productos, cliente, empleado):
-        self.id = Fun.generar_id_venta()
+    def __init__(self, productos, cliente, empleado, precio_total=None, id=None):
+        if id is None:
+            self.id = Fun.generar_id_venta()
+        else:
+            self.id = id
+        if precio_total is None:
+            self.precio_total = self.calcularPrecio()
+        else:
+            self.precio_total = precio_total
+        
         self.productos = productos
         self.cliente = cliente
         self.empleado = empleado
-        self.precio_total = self.calcularPrecio()
 
     # Calcula el precio total de la venta en el momento que se realizó (por si los precios cambian)
     # (me he planteado guardar el precio del momento de cada producto pero sería demasiado complejo)
@@ -430,7 +437,7 @@ class Venta():
         return precio_total
 
     def __str__(self):
-        return "Precio total: {0}. Cliente: {1}. Vendedor: {2}".format(str(self.precio_total), str(self.cliente.nombre),
+        return "Id: {0}. Precio total: {1}. Cliente: {2}. Vendedor: {3}".format(str(self.id), str(self.precio_total), str(self.cliente.nombre),
                                                                        str(self.empleado.nombre))
 #----------------------------------------------------------------------------------------------------------------------#
 class Usuario():

@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309c597f-bd99-427e-9303-42efad568b4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/logo-empresa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 1 - Registro De Usuarios/Practica1RegistroUsuarios/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 1 - Registro De Usuarios/Practica1RegistroUsuarios/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Clases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Datos/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Datos/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/BorrarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/BorrarDatos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/CargarDatos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GenerarID.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GenerarID.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GuardarModificarDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/GuardarModificarDatos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/Logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Funciones/Logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Ventanas/InicioSesion.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Ventanas/InicioSesion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/Menus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Practica 3 - Departamentos/Departamentos/venv/Archivos/pruebas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,10 +206,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="108" y="285" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1577451665645" />
-    <state x="503" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1580048139790">
+    <state x="503" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1583405207387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="503" y="354" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580048139790" />
+    <state x="503" y="354" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583405207387" />
     <state x="916" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1577285609308">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

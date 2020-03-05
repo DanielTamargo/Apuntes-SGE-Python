@@ -1,17 +1,7 @@
 from Archivos import Clases
 import csv
 
-# Carga la lista de clientes del fichero (o los datos base creados para pruebas)
-def cargar_datos_productos():
-    productos = []
-    with open('Datos/productos.txt', 'r+') as f:
-        lineas = [line.rstrip('\n') for line in f]
-        for linea in lineas:
-            datos = linea.split(",")
-            producto = Clases.Producto(datos[1], datos[2], datos[3], datos[4], datos[0])
-            productos.append(producto)
 
-    return productos
 
 def cargar_datos_proveedores():
     proveedores = []
@@ -22,6 +12,32 @@ def cargar_datos_proveedores():
             proveedores.append(proveedor)
 
     return proveedores
+
+def cargar_datos_productos():
+    productos = []
+    proveedores = cargar_datos_proveedores()
+    
+    with open('Datos/productos.txt', 'r+') as f:
+        lineas = [line.rstrip('\n') for line in f]
+        for linea in lineas:
+            datos = linea.split(",")
+            
+            estatus_producto = ""
+            proveedor_producto = ""
+            
+            if datos[4] == "Activo":
+                estatus_producto = Clases.EstatusProducto.Activo
+            else:
+                estatus_producto = Clases.EstatusProducto.Descatalogado
+            
+            for proveedor in proveedores:
+                if proveedor.id == datos[5]:
+                    proveedor_producto = proveedor
+            
+            producto = Clases.Producto(datos[1], datos[2], datos[3], estatus_producto, proveedor_producto, datos[0])
+            productos.append(producto)
+
+    return productos
 
 def cargar_datos_clientes():
     clientes = []
@@ -62,6 +78,43 @@ def cargar_datos_empleados():
             empleados.append(empleado)
 
     return empleados
+
+
+def cargar_datos_ventas():
+    ventas = []
+    productos = cargar_datos_productos()
+    clientes = cargar_datos_clientes()
+    empleados = cargar_datos_empleados()
+    with open('Datos/ventas.txt', 'r+') as f:
+        lineas = [line.rstrip('\n') for line in f]
+        for linea in lineas:
+            linea_datos_basicos = linea[0:linea.find("(")]
+            linea_datos_basicos = linea[0:(len(linea_datos_basicos) - 1)]
+            linea_productos = linea[(linea.find("(") + 1):linea.rfind(")")]
+            datos_basicos = linea_datos_basicos.split(",")
+            ids_productos = linea_productos.split(",")
+            
+            productos_venta = []
+            cliente_venta = datos[1]
+            empleado_venta = datos[2]
+            
+            for cliente in clientes:
+                if cliente.id == datos[1]:
+                    cliente_venta = cliente
+                        
+            for empleado in empleados:
+                if empleado.id == datos[2]:
+                    empleado_venta = empleado
+            
+            for id in ids_productos:
+                for producto in productos:
+                    if producto.id == id:
+                        productos_venta.append(producto)
+            venta = Clases.Venta(productos_venta, cliente_venta, empleado_venta, datos_basicos[3],
+                                 datos_basicos[0])
+            ventas.append(venta)
+
+    return ventas
 
 def cargar_empleado_con_id(id_empleado):
     empleados = cargar_datos_empleados()
